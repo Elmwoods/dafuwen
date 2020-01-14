@@ -1,0 +1,159 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="box-header">
+			<nav class="navbar navbar-default">
+				<div class="collapse navbar-collapse">
+					  <form method="post" role="search" class="navbar-form form-inline" id="search-form" action="#">
+						<div class="col-xs-2">
+							<input type="text" placeholder="用户id" name="user_id" id="user_id"  class="form-control" value="{$Request.param.user_id}"> 
+						</div>
+                        <div class="col-xs-3">         
+                                <div class="input-group margin">
+                                    <div class="input-group-addon">
+                                        选择时间  <i class="fa fa-calendar"></i>
+                                    </div>
+                                   <input type="text" class="form-control pull-right" name="timegap" value="{$Request.param.timegap}" id="start_time">
+                                </div>
+                        </div>
+                   <!--      <div class="col-sm-3">
+                            <div class="input-group">
+                                <select class="form-control m-b chosen-select" name="type" >
+                                    <option value="0">选择类型</option>
+                                    <option value="1" {if condition="$Request.param.type eq 1"}selected{/if}>下单消费</option>
+                                    <option value="2" {if condition="$Request.param.type eq 2"}selected{/if}>业绩返佣</option>
+                                </select>
+                            </div>
+                        </div>   -->
+						<button class="btn btn-info" type="submit"><i class="fa fa-search"></i> 筛选</button>
+					   </form>
+				</div>
+			</nav>
+		</div>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            {if $Request.param.user_id}
+            <div class="navbar navbar-default">
+                <div class="row navbar-form">
+                    <div class="pull-right">
+                        <a data-original-title="资金调节" class="btn btn-primary" title="" data-toggle="tooltip" onclick="change_money('{:url('shop/User/account_edit',array('user_id'=>$Request.param.user_id))}')"><i class="fa fa-pencil"></i>资金调节</a>
+                        <a data-original-title="返回" class="btn btn-default" title="" data-toggle="tooltip" href="javascript:history.go(-1)"><i class="fa fa-reply"></i></a>
+                    </div>
+                </div>
+            </div>
+            {/if}
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 今日开奖金额编辑记录列表</h3>
+                </div>
+
+
+                <div class="ibox-content">
+
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <td class="text-left">
+                                    用户
+                                </td>
+                                <td class="text-left">
+                                    手机号
+                                </td>
+                                <td class="text-left">
+                                    变动时间
+                                </td>
+                                <td class="text-left">
+                                    描述
+                                </td>
+                                <td class="text-left">
+                                    價值(金额)
+                                </td>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="lists" id="list"}
+                                <tr>
+                                    <td class="text-left">{$list.user_id}</td>
+                                    <td class="text-left">{$list.mobile}</td>
+                                    <td class="text-left">{$list.change_time|date="Y-m-d H:i:s",###}</td>
+
+                                    <td class="text-left">{$list.desc}</td>
+                                    <td class="text-left">
+                                       <!--  {if condition="$list['user_money'] gt 0"}+{/if} -->
+                                        {$list.user_money}
+                                    </td>
+                                
+                                </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                        <div class="pull-right">
+                            {$page}
+                        </div>
+                        <div class="pull-right">
+                            总计{$count}条
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+<script type="text/javascript">
+
+function change_money(url){
+    layer.open({
+        type: 2,
+        title: '资金变动',
+        shadeClose: true,
+        shade: 0.2,
+        area: ['75%', '75%'],
+        content: url, 
+    });
+}
+$(document).ready(function() {
+    $('#start_time').daterangepicker({
+        format:"YYYY-MM-DD",
+        singleDatePicker: false,
+        showDropdowns: true,
+        minDate:'2016-01-01',
+        maxDate:'2030-01-01',
+        startDate:'2016-01-01',
+        showWeekNumbers: true,
+        timePicker: false,
+        timePickerIncrement: 1,
+        timePicker12Hour: true,
+        ranges: {
+           '今天': [moment(), moment()],
+           '昨天': [moment().subtract('days', 1), moment().subtract('days', 1)],
+           '最近7天': [moment().subtract('days', 6), moment()],
+           '最近30天': [moment().subtract('days', 29), moment()],
+           '上一个月': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+        },
+        opens: 'right',
+        buttonClasses: ['btn btn-default'],
+        applyClass: 'btn-small btn-primary',
+        cancelClass: 'btn-small',
+        locale : {
+            applyLabel : '确定',
+            cancelLabel : '取消',
+            fromLabel : '起始时间',
+            toLabel : '结束时间',
+            customRangeLabel : '自定义',
+            daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+            monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月','七月', '八月', '九月', '十月', '十一月', '十二月' ],
+            firstDay : 1
+        }
+    });
+});
+</script>
+

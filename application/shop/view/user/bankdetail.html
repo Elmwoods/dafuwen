@@ -1,0 +1,156 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <section class="content">
+    <!-- Main content -->
+    <!--<div class="container-fluid">-->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h3 class="panel-title"><i class="fa fa-list"></i> 银行卡信息</h3>
+            </div>
+            <div class="ibox-content">
+                <form action="" method="post" onsubmit="return checkUserUpdate(this);">
+                    <table class="table table-bordered">
+                    <tbody>
+                   <!--  <tr>
+                       <td class="col-sm-2">银行卡信息:</td>
+                       <td ></td>
+                       <td></td>
+                   </tr> -->
+                 <tr>
+                    <td>银行卡账号:</td>
+                    <td>{if $bank_card }{$bank_card.account} {/if}<span style="margin-left:100px;"></span></td>
+                    <td></td>
+                </tr> 
+                <tr>
+                    <td>开户银行:</td>
+                    <td>{if $bank_card }{$bank_card.bank_name} {/if}<span style="margin-left:100px;"></span></td>
+                    <td></td>
+                </tr>  
+                 <tr>
+                    <td>支行:</td>
+                    <td>{if $bank_card }{$bank_card.branch_name} {/if}<span style="margin-left:100px;"></span></td>
+                    <td></td>
+                </tr>               
+                
+                    </tbody>
+                </table>
+                </form>
+
+            </div>
+        </div>
+ 	  </div> 
+    </div>    <!-- /.content -->
+   </section>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h3 class="panel-title"><i class="fa fa-list"></i> 微信收款信息</h3>
+            </div>
+            <div class="ibox-content">
+                <form action="" method="post" onsubmit="return checkUserUpdate(this);">
+                    <table class="table table-bordered">
+                    <tbody>
+                   <!--  <tr>
+                       <td class="col-sm-2">银行卡信息:</td>
+                       <td ></td>
+                       <td></td>
+                   </tr> -->
+                 <tr>
+                    <td>微信账号:</td>
+                    <td>{if $weixin }{$weixin.account} {/if}<span style="margin-left:100px;"></span></td>
+                    <td></td>
+                </tr> 
+                <tr>
+                    <td>收款人:</td>
+                    <td>{if $weixin }{$weixin.name} {/if}<span style="margin-left:100px;"></span></td>
+                    <td></td>
+                </tr>  
+                 <tr>
+                    <td>收款二维码:</td>
+                    <td>{if $weixin }<a href="{$weixin.qrcode_url}"><img src="{$weixin.qrcode_url}"  onerror="this.src='/static/admin/images/no_img.jpg'"/></a> {/if}<span style="margin-left:100px;"></span></td>
+                    <td></td>
+                </tr>               
+                
+                    </tbody>
+                </table>
+                </form>
+
+            </div>
+        </div>
+      </div> 
+    </div>    <!-- /.content -->
+
+ <div class="row">
+      <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h3 class="panel-title"><i class="fa fa-list"></i> 支付宝收款信息</h3>
+            </div>
+            <div class="ibox-content">
+                <form action="" method="post" onsubmit="return checkUserUpdate(this);">
+                    <table class="table table-bordered">
+                    <tbody>
+                   <!--  <tr>
+                       <td class="col-sm-2">银行卡信息:</td>
+                       <td ></td>
+                       <td></td>
+                   </tr> -->
+                 <tr>
+                    <td>支付宝账号:</td>
+                    <td>{if $alipay }{$alipay.account} {/if}<span style="margin-left:100px;"></span></td>
+                    <td></td>
+                </tr> 
+                <tr>
+                    <td>收款人:</td>
+                    <td>{if $alipay }{$alipay.name} {/if}<span style="margin-left:100px;"></span></td>
+                    <td></td>
+                </tr>  
+                 <tr>
+                    <td>收款二维码:</td>
+                    <td>{if $alipay }<a href="{$alipay.qrcode_url}"><img src="{$alipay.qrcode_url}"  onerror="this.src='/static/admin/images/no_img.jpg'"/></a>{/if}<span style="margin-left:100px;"></span></td>
+                    <td></td>
+                </tr>               
+                
+                    </tbody>
+                </table>
+                </form>
+
+            </div>
+        </div>
+      </div> 
+    </div>    <!-- /.content -->
+   </section>
+</div>
+<script>
+    function checkUserUpdate(){
+        var mobile = $('input[name="mobile"]').val();
+        var password = $('input[name="password"]').val();
+        var password2 = $('input[name="password2"]').val();
+        var pwd = $('input[name="paypwd"]').val();
+        var pwd2 = $('input[name="paypwd2"]').val();
+
+        var error ='';
+        if(password != password2){
+            error += "两次密码不一样\n";
+        }
+        if(pwd != pwd2){
+            error += "两次二级密码不一样\n";
+        }
+        if(!checkMobile(mobile)){
+            error += "手机号码填写有误\n";
+        }
+        if(error){
+            layer.alert(error, {icon: 2});  //alert(error);
+            return false;
+        }
+        return true;
+
+    }
+</script>
+
+</body>
+</html>

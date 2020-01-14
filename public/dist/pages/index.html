@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+<link rel="stylesheet" href="../assets/css/zpui.css"/>
+<link rel="stylesheet" href="../assets/css/all.css"/>
+<script src="../assets/js/page.js"></script>
+      <title>大富翁香港之旅</title>
+      <style>
+          .kaijiang{
+              background: #f55231 !important;
+          }
+          .fanzhi{
+              background: #3dccb4 !important;
+          }
+          .gotolog{
+              margin: 10px auto;
+              display: block;
+              background: #22e484;
+              border: 0px;
+              padding: 0 10px;
+              color: #fff;
+              border-radius: 3px;
+              position: relative;
+              height: 36px;
+              line-height: 36px;
+              min-width: 60px;
+              /*width: 30%;*/
+              font-size: 15px;
+          }
+              /* 隐藏顶部浮动栏选项  */
+        body { position: static !important; top:0px !important; }
+        iframe.goog-te-banner-frame { display: none !important; }
+        .goog-logo-link { display:none !important; }
+        .goog-te-gadget { color: transparent !important; overflow: hidden;}
+        .goog-te-balloon-frame{display: none !important;}
+
+        /*使原始文本弹出窗口隐藏*/
+        .goog-tooltip {display: none !important;}
+        .goog-tooltip:hover {display: none !important;}
+        .goog-text-highlight {background-color: transparent !important; border: none !important; box-shadow: none !important;}
+
+        /* 语言选择框颜色 */
+        .goog-te-combo {background-color:#848CB5; border-radius:8px;}
+      </style>
+  </head>
+  <body>
+  <div id="wrap" style="z-index: 1000000;
+    position: fixed ! important;
+    right: 0px;
+    top: 10px;">
+    <!-- 谷歌语言 -->
+    <div id="google_translate_element"></div>
+   </div>
+    <div class="page index">
+      <div class="page-bd">
+        <!-- 页面内容 -->
+        <!-- <div class="imgBox"><img src="../assets/images/name.png" alt="" /></div> -->
+        <div style="color: #fff;padding: 0.3rem 0.16rem 0.1rem 0.16rem;font-size: 0.28rem;font-weight: bold; text-align: center">大富翁香港之旅</div>
+        <div class="banner" style="padding: 0.12rem 0.16rem 0 0.16rem;"></div>
+        <div class="piglist">
+          <!-- <div class="box">
+            <div class="pigimg">
+              <img src="../assets/images/pig01.png" alt="" />
+              <span class="fs34 fw_b">财神猪</span>
+            </div>
+            <div class="info fs22">
+              <div>價值:<span>500-2500</span></div>
+              <div>購置時間:<span>14:00-15:00</span></div>
+              <div>預約/即搶購置微分:<span>9/18</span></div>
+              <div>智能合約收益:<span>15天/12.5%</span></div>
+              <div>可挖PIG:<span>10枚</span></div>
+              <div>可挖DOGE:<span>收益45%</span></div>
+            </div>
+            <div class="button fs28 fw_b buttoning">待購置</div>
+          </div> -->
+          <!-- <div class="box">
+            <div class="pigimg">
+              <img src="../assets/images/pig02.png" alt="" />
+              <span class="fs34 fw_b">福气猪</span>
+            </div>
+            <div class="info fs22">
+              <div>價值:<span>200-1800</span></div>
+              <div>購置時間:<span>14:00-15:00</span></div>
+              <div>預約/即搶購置微分:<span>9/18</span></div>
+              <div>智能合約收益:<span>15天/12.5%</span></div>
+              <div>可挖PIG:<span>10枚</span></div>
+              <div>可挖DOGE:<span>收益45%</span></div>
+            </div>
+            <div class="button fs28 fw_b buttoned">預約</div>
+          </div>
+          <div class="box">
+            <div class="pigimg">
+              <img src="../assets/images/pig03.png" alt="" />
+              <span class="fs34 fw_b">金钱猪</span>
+            </div>
+            <div class="info fs22">
+              <div>價值:<span>500-2500</span></div>
+              <div>購置時間:<span>14:00-15:00</span></div>
+              <div>預約/即搶購置微分:<span>9/18</span></div>
+              <div>智能合約收益:<span>15天/12.5%</span></div>
+              <div>可挖PIG:<span>10枚</span></div>
+              <div>可挖DOGE:<span>收益45%</span></div>
+            </div>
+            <div class="button fs28 fw_b buttoning">待購置</div>
+          </div>
+          <div class="box">
+            <div class="pigimg">
+              <img src="../assets/images/pig04.png" alt="" />
+              <span class="fs34 fw_b">红包猪</span>
+            </div>
+            <div class="info fs22">
+              <div>價值:<span>500-2500</span></div>
+              <div>購置時間:<span>14:00-15:00</span></div>
+              <div>預約/即搶購置微分:<span>9/18</span></div>
+              <div>智能合約收益:<span>15天/12.5%</span></div>
+              <div>可挖PIG:<span>10枚</span></div>
+              <div>可挖DOGE:<span>收益45%</span></div>
+            </div>
+            <div class="button fs28 fw_b buttoned">預約</div>
+          </div> -->
+        </div>
+        <div class="model">
+            <div class="modelBG"></div>
+            <div class="Box succeed" style="text-align: center">
+                <img src="../assets/images/succeedPig.png" alt="">
+                <span class="fs36 fw_b">恭喜您<br>購置成功!</span>
+                <span class="fs36 fw_b"><a href="/dist/pages/adopt_log.html"  class="gotolog">前往購置记录</a></span>
+                <div class="closeBox" style="margin-top: 10%;" onclick="closeBox()"><img src="../assets/images/closeIcon.png" alt=""></div>
+            </div>
+            <div class="Box fail" style="text-align: center">
+                <img src="../assets/images/failPig.png" alt="" style="text-align: center">
+                <span class="fs36 fw_b">好伤心<br>没購置到区块地皮</span>
+                <span class="fs36 fw_b"><a href="/dist/pages/adopt_log.html"  class="gotolog">前往購置记录</a></span>
+                <div class="closeBox" style="margin-top: 10%;" onclick="closeBox()"><img src="../assets/images/closeIcon.png" alt=""></div>
+            </div>
+            <div class="Box loading">
+                <div class="loadBox"><div></div><div></div><div></div><div></div><div></div></div>
+                <span class="fs36 fw_b">等待購置结果<br>请不要关闭</span>
+            </div>
+        </div>
+      </div>
+      <div class="bottom-tabbar-wrapper">
+  <div class="bottom-tabbar">
+    <a href="index.html" class="bottom-tabbar__item active">
+        <span class="icon">
+            <img src="../assets/images/bottom_icon01.png"/>
+            <img class="lhimg" src="../assets/images/bottom_icon01_lh.png"/>
+        </span>
+      <p class="label">土地資源</p>
+    </a>
+    <a href="service.html" class="bottom-tabbar__item ">
+      <span class="icon">
+          <img src="../assets/images/bottom_icon02.png"/>
+          <img class="lhimg" src="../assets/images/bottom_icon02_lh.png"/>
+      </span>
+    <p class="label">服務中心</p>
+    </a>
+    <a href="center.html" class="bottom-tabbar__item ">
+        <span class="icon">
+            <img src="../assets/images/bottom_icon03.png"/>
+            <img class="lhimg" src="../assets/images/bottom_icon03_lh.png"/>
+        </span>
+      <p class="label">我的資產</p>
+    </a>
+  </div>
+</div>
+<audio src="../assets/audio/9888.wav" id="error"></audio>
+<audio src="../assets/audio/10762.wav" id="success"></audio>
+    </div>
+    <!-- 游戏模块s -->
+    <input name="game_time" type="hidden" value="">
+    <input name="game_id" type="hidden" value="">
+    <input name="game_openaward" type="hidden" value="">
+    <input name="game_stage" type="hidden" value="">
+
+    <!-- 游戏模块e -->
+<script src="../assets/js/lib/jquery-2.1.4.js"></script>
+<script src="../assets/js/jquery-weui.min.js"></script>
+<script src="../assets/js/lib/fastclick.js"></script>
+<script src="../assets/js/layer.js"></script>
+<script src="../assets/js/ajaxplugin.js"></script>
+
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+    <script>
+    $(function(){
+
+        var __gameTimeController = 0 ;      //游戏定时器
+        var __gameTimeAward = 0 ; //开奖过程时间
+         window.isyuyue = {};
+
+        var url = '/api/nologin/pig_goods';
+        var type = 'get';
+
+        already_yuyue(); //初始化預約列表
+        console.log(isyuyue);
+
+          a_load(url,{},type,function(data){
+
+              if(data.data.banner){
+                var _html = '<img src="'+data.data.banner+'" style="height:2rem;width:100%;"/>';
+                $(".banner").html(_html);  
+              }
+              
+              console.log(data.data)
+              var str = html ='';
+              var eachcount=0;
+
+              $.each(data.data.list, function(i, obj) {
+
+                //如果是开奖了，那么全部变成升值中
+                if(obj.today_is_open == 1){
+                    obj.game_level = 3;
+                }
+                str += '<div class="box" id="pig_level_'+obj.id+'">';
+                str += '<div class="pigimg">';
+                str += '<img src="/uploads/images/'+obj.images+'" alt="" />';
+                str += '<span class="fs34 fw_b">'+obj.goods_name+'</span>';
+                str += '</div>';
+                str += '<div class="info fs22" >';
+                str += '<div>價值:<span>'+obj.small_price+'-'+obj.large_price+'</span></div>';
+                str += '<div>購置時間:<span>'+obj.start_time+'-'+obj.end_time+'</span></div>';
+                str += '<div>預約/即搶購置微分:<span>'+obj.reservation+'/'+obj.adoptive_energy+'</span></div>';
+                str += '<div>智能合約收益:<span>'+obj.contract_days+'天/'+obj.income_ratio+'%</span></div>';
+                str += '<div>可挖HKT:<span>'+obj.pig_currency+'枚</span></div>';
+                // str += '<div>可挖DOGE:<span>'+obj.doge_money+'%</span></div>';
+                str += '</div>';
+                str += '<div class="game_btn">'
+                str +=  btn_style(obj.game_level,obj.id);
+                str += '</div></div>';
+
+              /*  str += '<div class="box" id="pig_level_'+obj.id+'">';
+                str += '<div class="pigimg">';
+                str += '<img src="/uploads/images/'+obj.images+'" alt="" />';
+                str += '<span class="fs34 fw_b">'+obj.goods_name+'</span>';
+                str += '</div>';
+                str += '<div class="info fs22" >';
+                str += '<div>價值:'+obj.small_price+'-'+obj.large_price+'</div>';
+                str += '<div>購置時間:'+obj.start_time+'-'+obj.end_time+'</div>';
+                str += '<div>預約/即搶購置微分:'+obj.reservation+'/'+obj.adoptive_energy+'</div>';
+                str += '<div>智能合約收益:'+obj.contract_days+'天/'+obj.income_ratio+'%</div>';
+                str += '<div>可挖PIG:'+obj.pig_currency+'枚</div>';
+                str += '<div>可挖DOGE:'+obj.doge_money+'%</div>';
+                str += '</div>';
+                str += '<div class="game_btn">'
+                str +=  btn_style(obj.game_level,obj.id);
+                str += '</div></div>';*/
+              });
+              $(".piglist").append(str);
+              //防止加载不到
+              setTimeout("checkGame()",50);
+
+          })
+
+
+        //每隔5S校验游戏
+        window.setInterval("checkGame()",5000);
+
+        //按钮样式
+        function btn_style(n,id){
+            var html ;
+            switch(n){
+                case 1:
+                case 2:
+                    html = stage1(id);
+                    break;
+                case 3:
+                case 4:
+                    html = '<div class="button fs28 fw_b buttoning level_btn fanzhi">升值中</div>';break;
+            }
+            return html;
+        }
+
+        //第一阶段判断是待購置还是預約
+        function stage1(id){
+
+            var html,controller =false;
+
+            for(var i = 0; i < isyuyue.length; i++){
+                console.log(isyuyue[i])
+                if(id == isyuyue[i]){
+                    controller = true;
+                    break;
+                }
+            }
+
+            if(controller){
+                html = '<div class="button fs28 fw_b buttoning level_btn">待購置</div>';
+            }else{
+                html = '<div class="button fs28 fw_b buttoned level_btn" onclick="yuyue('+id+')">預約</div>';
+            }
+            return html;
+        }
+        //获取所有已经預約的游戏--json格式
+        function already_yuyue(){
+              //var isyuyue = {};
+            __oajax('/api/Game/isYuyueData',{},type,function(data){
+                console.log(data.data,1111111);
+                window.isyuyue = data.data;
+            });
+        }
+
+        //根据不同的 阶段和id修改按钮的状态 level = id,status=stage
+        function updateBtn(level,status,maxtime){
+            //$('#pig_level_'+level).find('div.buttoning').html(status);
+            var __btn = $('#pig_level_'+level).find('div.game_btn');
+            //var maxtime = 30*60 ;
+            console.log(status);
+
+            switch(status){
+                case 1:
+                    var html = stage1(level);
+                    __btn.html(html);
+                    break;
+                case 2:
+                    timer = setInterval(function(){
+                        if (maxtime >= 0) {
+                            minutes = Math.floor(maxtime / 60);
+                            seconds = Math.floor(maxtime % 60);
+                            msg =  minutes + "分" + seconds + "秒";
+                            var html = '<div class="button fs28 fw_b buttoning level_btn">'+msg+'</div>'    ;
+
+                            __btn.html(html);
+                            //if (maxtime == 5 * 60)alert("还剩5分钟");
+                            --maxtime;
+                        } else{
+                            updateBtn(level,3);
+                            clearInterval(timer);
+                        }
+                    }, 1000);
+                    break;
+                case 3:
+                    __btn.html('<div class="button fs28 fw_b buttoning level_btn kaijiang" onclick="clickBuy('+level+')">开抢</div>');
+
+                    var _aw_time = $('input[name="game_openaward"]').val();
+
+                    window.setTimeout(function(){
+                        updateBtn(level,4);
+                    },_aw_time * 1000);
+                    break;
+                case 4:
+                    __btn.html('<div class="button fs28 fw_b buttoning level_btn fanzhi">升值中</div>');
+                    checkGame();
+                    break;
+
+            }
+        }
+
+    })
+    //第一阶段判断是待購置还是預約
+    function stage1(id){
+
+        var html,controller =false;
+        for(var i = 0; i < isyuyue.length; i++){
+            console.log(isyuyue[i])
+            if(id == isyuyue[i]){
+                controller = true;
+                break;
+            }
+        }
+
+        console.log(id,controller,'123');
+        if(controller){
+            html = '<div class="button fs28 fw_b buttoning level_btn">待購置</div>';
+        }else{
+            html = '<div class="button fs28 fw_b buttoned level_btn" onclick="yuyue('+id+')">預約</div>';
+        }
+        return html;
+    }
+    //获取所有已经預約的游戏--json格式
+    function already_yuyue(){
+        __oajax('/api/Game/isYuyueData',{},'get',function(data){
+            window.isyuyue = data.data;
+        });
+    }
+    //預約按钮
+    var is_ajax = 0;
+    function yuyue(id){
+        if(is_ajax){
+            layer.open({
+                content: '您正在預約中！'
+                ,time: 2
+                ,skin: 'msg'
+            });
+            return false;
+        }
+        is_ajax = 1;
+        var type = 'post';
+        var yuyue_status = '';
+        __ajax('/api/business/is_yuyue',{id:id},type,function(data){
+
+            // if(data.status == 2){
+            //    layer.open({
+            //         content: data.message
+            //         ,time: 2
+            //         ,skin: 'msg'
+            //     });
+            //    window.setTimeout(function(){
+            //         window.location.reload();
+            //     },2000);
+            //   return ;
+            // }
+            
+            // console.log(data.status)
+            if(data.status == 0){
+                layer.open({
+                    content: data.message
+                    ,time: 2
+                    ,skin: 'msg'
+                });
+                window.setTimeout(function(){
+                    window.location.href = '/dist/pages/authentication.html'
+                },1000);
+            }else{
+                var type = 'post';
+                __ajax('/api/Game/yuyue',{id:id},type,function(data){
+                layer.open({
+                    content: data.message
+                    ,time: 2
+                    ,skin: 'msg'
+                });
+                console.log(data.status)
+                if(data.status == 1){
+                    already_yuyue();
+                    var html = stage1(id);
+                    var __btn = $('#pig_level_'+id).find('div.game_btn');
+                    __btn.html(html);
+                }
+                is_ajax = 0;
+                });
+            }
+        });
+ 
+        // if (window.yuyue_status == 1) {
+            
+        // }    
+    }
+    //校验游戏
+    function checkGame(){
+        var id = $('input[name=game_id]');
+        var time =  $('input[name=game_time]');
+        var openaward =  $('input[name=game_openaward]');
+        var stage =  $('input[name=game_stage]');
+
+        local_ajax('/api/game/checkGame',{},'get',function(data){
+            _data = data.data;
+            __time = _data.now_game_time
+            __stage = _data.stage;
+            var ths_id_val = id.val();
+            
+            if(ths_id_val != _data.id){
+                //local_ajax('/api/game/changeGameStatus',{id:ths_id_val},'get',function(change_data){
+               //       updateBtn(ths_id_val,change_data.stage,0);
+               // })
+                updateBtn(ths_id_val,4,0);
+            }
+            //校验
+            if(__time != time.val()){
+                id.val(_data.id)
+                time.val(_data.now_game_time)
+                openaward.val(_data.openaward)
+                //window.clearTimeout(__gameTimeController);
+                //__gameTimeController = window.setTimeout(function(){
+                //},_data.time);
+            }
+            //修改了场次需要重新审核上个场次
+
+            if(stage.val() != __stage){
+                stage.val(__stage);
+                updateBtn(_data.id,_data.stage,_data.time);
+            }
+        })
+    }
+    //根据不同的 阶段和id修改按钮的状态 level = id,status=stage
+    function updateBtn(level,status,maxtime){
+        //$('#pig_level_'+level).find('div.buttoning').html(status);
+        var __btn = $('#pig_level_'+level).find('div.game_btn');
+        //var maxtime = 30*60 ;
+        console.log(status);
+
+        switch(status){
+            case 1:
+                var html = stage1(level);
+                __btn.html(html);
+                break;
+            case 2:
+                timer = setInterval(function(){
+                    if (maxtime >= 0) {
+                        minutes = Math.floor(maxtime / 60);
+                        seconds = Math.floor(maxtime % 60);
+                        msg =  minutes + "分" + seconds + "秒";
+                        var html = '<div class="button fs28 fw_b buttoning level_btn">'+msg+'</div>'    ;
+                        __btn.html(html);
+                        //__btn.find('div.level_btn').html(msg);
+                        //if (maxtime == 5 * 60)alert("还剩5分钟");
+                        --maxtime;
+                    } else{
+                        updateBtn(level,3);
+                        clearInterval(timer);
+                    }
+                }, 1000);
+                break;
+            case 3:
+                __btn.html('<div class="button fs28 fw_b buttoning level_btn kaijiang" onclick="clickBuy('+level+')">开抢</div>');
+
+                var _aw_time = $('input[name="game_openaward"]').val();
+
+                window.setTimeout(function(){
+                    updateBtn(level,4);
+                },_aw_time * 1000);
+                break;
+            case 4:
+                __btn.html('<div class="button fs28 fw_b buttoning level_btn fanzhi">升值中</div>');
+                checkGame();
+                break;
+
+        }
+    }
+
+    //阶段处理
+    //点击抢购
+    function clickBuy(id){
+        $('.model').show();
+        //2019-3-12-----------
+        $('.succeed').hide();
+        $('.fail').hide();
+        //2019-3-12-----------
+        __ajax1('/api/Game/flash_buy',{id:id},'get',function(data){
+
+            //已经返回结果一次结果
+            var _data = data;
+            console.log(_data);
+
+            if(_data.status == -1){
+               
+               layer.open({
+                    content: '请先进行實名認證'
+                    ,time: 2
+                    ,skin: 'msg'
+                });
+                window.setTimeout(function(){
+                    window.location.href = '/dist/pages/authentication.html'
+                },1000);
+               return;
+            }
+
+            
+            if(_data.status == 1){
+              //alert('进入成功');
+                var _aw_time = $('input[name="game_openaward"]').val();
+
+                window.setTimeout(function(){
+                    //查询次数
+                    var sel_count =  10000;
+                    var _interval = window.setInterval(function(){
+                        console.log(sel_count);
+                        if(sel_count > 0){
+                            local_ajax('/api/Game/checkOpen',{id:id},'get',function(data){
+                                if(data.status == 200 || data.status == 100){
+                                    window.clearInterval(_interval);
+                                    if(data.status == 200){
+                                        $('.loading').hide();
+                                        $('.succeed').show();
+                                        var success = document.getElementById('success');
+                                        success.play();//audio.play();// 这个就是播放
+                                    }else{
+                                        $('.loading').hide();
+                                        $('.fail').show();
+                                        var error = document.getElementById('error');
+                                        error.play();//audio.play();// 这个就是播放
+                                    }
+
+                                }else{
+                                    sel_count --;
+
+                                }
+                            })
+                        }else{
+                            window.clearInterval(_interval);
+                            $('.model').hide();
+                            $('.loading').hide();
+                            $('.fail').show();
+                            var error = document.getElementById('error');
+                            error.play();//audio.play();// 这个就是播放
+                            layer.open({
+                                content: '网络异常'
+                                ,time: 2
+                                ,skin: 'msg'
+                            });
+
+                        }
+
+                    },10000)
+                },_aw_time);
+            }else{
+                
+                $('.loading').hide();
+                $('.fail').show();
+                var error = document.getElementById('error');
+                error.play();//audio.play();// 这个就是播放
+
+            }
+            //第二次访问查看是否有中奖
+        },function(){
+            layer.open({
+                content: '网络异常,请重新抢购'
+                ,time: 2
+                ,skin: 'msg'
+            });
+            $('.loading').hide();
+            closeBox();
+        });
+    }
+
+    function closeBox(){
+        $('.model').hide();
+    }
+
+
+    $(document).ready(function(){
+        //do something
+        checkGame();
+    })
+// function detail(){
+  // var success = document.getElementById('success'); 
+  // var audio1 = document.getElementById('error'); 
+  // success.play(); //这个就是播放  
+  // audio1.play(); //这个就是播放  
+// }
+
+
+
+__ajax('/api/Login/getannouncement',{},'get',function(data){
+    console.log('公告返回的',data)
+    if(data.status == 1){
+         layer.open({    
+                    content:data.data.announcement,
+                    title:data.data.title,
+                    skin: 'layer_bg'
+         });
+    }
+  })
+    </script>
+ 
+  </body>
+</html>

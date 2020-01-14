@@ -1,0 +1,31 @@
+{include file="../application/common/view/public/footer.html" /}
+
+<div id="ordfoo" class="orderfoods" style="">
+    <div class="dor_head">
+        <p class="fl">新订单通知</p>
+        <p onClick="closes();" id="close" class="fr" style="cursor:pointer">x</p>
+    </div>
+    <div class="dor_foot">
+        <p class="te-in">您有<span id="orderAmount">{$order_amount}</span>个订单待处理</p>
+        <p class="te-al-ce"><a href="{:U('Order/index')}" target='rightContent'><span>点击查看</span></a></p>
+    </div>
+</div>
+<script type="text/javascript">
+    function closes(){
+        is_close = 1;
+        document.getElementById('ordfoo').style.display = 'none';
+    }
+
+    // 没有点击收货确定的按钮让他自己收货确定
+    // var timestamp = Date.parse(new Date());
+    // $.ajax({
+    //     type:'post',
+    //     url:"{:url('Systems/login_task')}",
+    //     data:{timestamp:timestamp},
+    //     timeout : 100000000, //超时时间设置，单位毫秒
+    //     success:function(){
+    //         // 执行定时任务
+    //     }
+    // });
+</script>
+<!-- 新订单提醒-e -->

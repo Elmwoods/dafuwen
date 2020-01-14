@@ -1,0 +1,7 @@
+<div class="builder-tabs builder-form-tabs">
+    <ul class="nav nav-tabs">
+        {volist name="Think.config.publish_info_type" id="group"}
+            <li {eq name="tid" value="$key"}class="active"{/eq}><a href="{:url("$sc_urls[$key]")}">发布{$group}</a></li>
+        {/volist}           
+    </ul>
+</div>

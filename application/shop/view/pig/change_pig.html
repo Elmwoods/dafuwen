@@ -1,0 +1,28 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="container-fluid">
+        <form action=""  class="navbar-form form-inline" method="post">
+            <div class="form-group">
+                <label class="control-label">填写指定的ID：</label>
+                <div class="input-group">
+                    <input type="hidden" name="id" value="{$exclusive_pig['id']}">
+                    <input type="text" name="appoint_user_id" value="{$exclusive_pig['appoint_user_id']}"  class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary center-block">提交</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+
+    // function change_pig(id,nickname) {
+    //     $('#id').val(id);
+    //     $('#appoint_user_id').val(appoint_user_id);
+    // }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+<link rel="stylesheet" href="../assets/css/zpui.css"/>
+<link rel="stylesheet" href="../assets/css/all.css"/>
+<script src="../assets/js/page.js"></script>
+
+    <title>幫忙中心</title>
+  </head>
+  <body>
+    <div class="page centre">
+      <div class="page-hd">
+        <div class="header bor-1px-b">
+    <div class="header-left">
+        <a href="javascript:history.go(-1)" class="left-arrow"></a>
+    </div>
+    <div class="header-title">幫忙中心</div>
+    <div class="header-right">
+        <a href="#"></a>
+    </div>
+</div>
+      </div>
+      <div class="page-bd">
+        <!-- 页面内容 -->
+         <div class="box">
+           <div class="row"></div>
+         </div>
+      </div>
+    </div>
+<script src="../assets/js/lib/jquery-2.1.4.js"></script>
+<script src="../assets/js/jquery-weui.min.js"></script>
+<script src="../assets/js/lib/fastclick.js"></script>
+<script src="../assets/js/layer.js"></script>
+<script src="../assets/js/ajaxplugin.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+          var url = '/api/help/articleList';
+          var type = 'get';
+          a_load(url,{},type,function(data){
+              console.log(data.data)
+              var str = '';
+              $.each(data.data, function(i, obj) {
+                str += '<div class="fs30 fw_b color_3 " onclick="detail('+obj.id+')">';
+                str +=  obj.title;
+                str += '</div>';
+              });
+              $(".row").append(str);
+          })
+    });
+    function detail(id){
+      window.location.href = '/dist/pages/help_detail.html?id='+id
+    }
+</script>
+<style type="text/css">
+  .fs30{
+    padding-bottom: 20px
+  }
+</style>
+  </body>
+</html>

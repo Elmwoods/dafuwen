@@ -1,0 +1,107 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+	<section class="content">
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	           	<div class="box-header">
+	           		<!--搜索框开始-->
+            <div class="row">
+                <div class="col-sm-12">                                             
+                    <form name="admin_list_sea" class="form-search" method="post" id="distSetList" action="{:url('distSetList')}">               
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                 <select class="form-control m-b chosen-select" name="user_level" onchange="change();" >
+                                        <option {if condition="@$user_level eq 3"}selected{/if} value="3">钻卡</option>
+                                        <option {if condition="@$user_level eq 4"}selected{/if} value="4">公司</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form> 
+                    <nav class="navbar navbar-default">	     
+				        <div class="collapse navbar-collapse">
+				            <div class="navbar-form row">
+					            <a href="{:U('User/distSet')}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>新增分佣区域</a>
+				            </div>
+				      	</div>
+	    			</nav>                         
+                </div>
+            </div>
+            <!--搜索框结束-->
+	                            
+	             </div>	    
+	             <!-- /.box-header -->
+	             <div class="box-body">	             
+	           		<div class="row">
+	            	<div class="col-sm-12">
+		              <table id="list-table" class="table table-bordered table-hover" role="grid" aria-describedby="example1_info">
+		                 <thead>
+		                   <tr role="row">
+			                   <th class="sorting" tabindex="0">ID</th>
+			                   <th class="sorting" tabindex="0">会员等级</th>
+			                   <th class="sorting" tabindex="0">最低金额</th>
+			                   <th class="sorting" tabindex="0">最高金额</th>
+			                   <th class="sorting" tabindex="0">分佣比例</th>
+			                   <th class="sorting" tabindex="0">注册时间</th>
+			                   <th class="sorting" tabindex="0">操作</th>
+		                   </tr>
+		                 </thead>
+						<tbody>
+						  {foreach name="list" item="vo" key="k" }
+						  	<tr role="row" align="center">
+		                     <td>{$vo.id}</td>
+		                     <td>{$vo.user_level}</td>
+		                     <td>{$vo.lowermoney}</td>
+		                     <td>{$vo.topmoney}</td>
+		                     <td>{$vo.proportion}%</td>
+		                     <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>		                     
+		                     <td>
+		                      <a class="btn btn-primary" href="{:U('User/distSet',array('id'=>$vo['id']))}"><i class="fa fa-pencil"></i></a>
+		                      <a class="btn btn-danger" href="javascript:void(0)" data-url="{:U('User/distSetDel')}" data-id="{$vo.id}" onclick="delfun(this)"><i class="fa fa-trash-o"></i></a>
+							</td>
+		                   </tr>
+		                  {/foreach}
+		                   </tbody>
+		                 <tfoot>
+		                 
+		                 </tfoot>
+		               </table>
+	               </div>
+	          </div>
+              <div class="row">
+              	    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right"></div>		
+              </div>
+	          </div><!-- /.box-body -->
+	        </div><!-- /.box -->
+       	</div>
+       </div>
+   </section>
+</div>
+<script>
+function delfun(obj){
+	if(confirm('确认删除')){		
+		$.ajax({
+			type : 'post',
+			url : $(obj).attr('data-url'),
+			data : {id:$(obj).attr('data-id')},
+			dataType : 'json',
+			success : function(data){
+				if(data){
+					$(obj).parent().parent().remove();
+				}else{
+					layer.alert('删除失败', {icon: 2});  //alert('删除失败');
+				}
+			}
+		})
+	}
+	return false;
+}
+
+function change(){
+	var form = document.getElementById("distSetList");
+    form.submit();//form表单提交
+}
+</script>  
+</body>
+</html>

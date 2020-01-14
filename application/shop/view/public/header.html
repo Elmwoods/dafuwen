@@ -1,0 +1,178 @@
+{include file="../application/common/view/public/header.html" /}
+
+<!--<link href="__SHOP_URL__/static/css/page.css" rel="stylesheet" type="text/css">-->
+
+<link href="__SHOP_URL__/static/font/css/font-awesome.min.css" rel="stylesheet" />
+
+
+<script type="text/javascript" src="__SHOP_URL__/static/js/admin.js"></script>
+<script type="text/javascript" src="__SHOP_URL__/static/js/jquery.validation.min.js"></script>
+
+<script type="text/javascript" src="__SHOP_URL__/static/js/common.js"></script>
+<script type="text/javascript" src="__SHOP_URL__/static/js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="__SHOP_URL__/static/js/jquery.mousewheel.js"></script>
+
+
+<link href="__SHOP_URL__/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+<script src="__SHOP_URL__/plugins/daterangepicker/moment.min.js" type="text/javascript"></script>
+<script src="__SHOP_URL__/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+
+<script src="__SHOP_URL__/js/myFormValidate.js"></script>
+<!--<script src="__SHOP_URL__/js/myAjax2.js"></script>-->
+<script src="__SHOP_URL__/js/myAjax.js"></script>
+<script src="__SHOP_URL__/js/global.js"></script>
+<script type="text/javascript" src="__SHOP_URL__/js/layer/layer.js"></script>
+<script type="text/javascript">
+    function delfunc(obj){
+    	layer.confirm('确认删除？', {
+    		  btn: ['确定','取消'] //按钮
+    		}, function(){
+    		    // 确定
+   				$.ajax({
+   					type : 'post',
+   					url : $(obj).attr('data-url'),
+   					data : {act:'del',del_id:$(obj).attr('data-id')},
+   					dataType : 'json',
+   					success : function(data){
+						layer.closeAll();
+   						if(data==1){
+   							layer.msg('操作成功', {icon: 1});
+   							window.location.reload();
+   							//$(obj).parent().parent().parent().remove();
+   						}else{
+   							layer.msg(data, {icon: 2,time: 2000});
+   						}
+   					}
+   				})
+    		}, function(index){
+    			layer.close(index);
+    			return false;// 取消
+    		}
+    	);
+    }
+
+    function selectAll(name,obj){
+    	$('input[name*='+name+']').prop('checked', $(obj).checked);
+    }
+
+    function delAll(obj,name){
+    	var a = [];
+    	$('input[name*='+name+']').each(function(i,o){
+    		if($(o).is(':checked')){
+    			a.push($(o).val());
+    		}
+    	})
+    	if(a.length == 0){
+    		layer.alert('请选择删除项', {icon: 2});
+    		return;
+    	}
+    	layer.confirm('确认删除？', {btn: ['确定','取消'] }, function(){
+    			$.ajax({
+    				type : 'get',
+    				url : $(obj).attr('data-url'),
+    				data : {act:'del',del_id:a},
+    				dataType : 'json',
+    				success : function(data){
+						layer.closeAll();
+    					if(data == 1){
+    						layer.msg('操作成功', {icon: 1});
+    						$('input[name*='+name+']').each(function(i,o){
+    							if($(o).is(':checked')){
+    								$(o).parent().parent().remove();
+    							}
+    						})
+    					}else{
+    						layer.msg(data, {icon: 2,time: 2000});
+    					}
+    				}
+    			})
+    		}, function(index){
+    			layer.close(index);
+    			return false;// 取消
+    		}
+    	);
+    }
+
+    /**
+     * 全选
+     * @param obj
+     */
+    function checkAllSign(obj){
+        $(obj).toggleClass('trSelected');
+        if($(obj).hasClass('trSelected')){
+            $('#flexigrid > table>tbody >tr').addClass('trSelected');
+        }else{
+            $('#flexigrid > table>tbody >tr').removeClass('trSelected');
+        }
+    }
+    /**
+     * 批量公共操作（删，改）
+     * @returns {boolean}
+     */
+    function publicHandleAll(type){
+        var ids = '';
+        $('#flexigrid .trSelected').each(function(i,o){
+//            ids.push($(o).data('id'));
+            ids += $(o).data('id')+',';
+        });
+        if(ids == ''){
+            layer.msg('至少选择一项', {icon: 2, time: 2000});
+            return false;
+        }
+        publicHandle(ids,type); //调用删除函数
+    }
+    /**
+     * 公共操作（删，改）
+     * @param type
+     * @returns {boolean}
+     */
+    function publicHandle(ids,handle_type){
+        layer.confirm('确认当前操作？', {
+                    btn: ['确定', '取消'] //按钮
+                }, function () {
+                    // 确定
+                    $.ajax({
+                        url: $('#flexigrid').data('url'),
+                        type:'post',
+                        data:{ids:ids,type:handle_type},
+                        dataType:'JSON',
+                        success: function (data) {
+                            layer.closeAll();
+                            if (data.status == 1){
+                                layer.msg(data.msg, {icon: 1, time: 2000},function(){
+                                    location.href = data.url;
+                                });
+                            }else{
+                                layer.msg(data.msg, {icon: 2, time: 2000});
+                            }
+                        }
+                    });
+                }, function (index) {
+                    layer.close(index);
+                }
+        );
+    }
+</script>  
+
+
+
+<!--login_task-->
+<script type="text/javascript">
+    function closes(){
+        is_close = 1;
+        document.getElementById('ordfoo').style.display = 'none';
+    }
+
+    // 没有点击收货确定的按钮让他自己收货确定
+    // var timestamp = Date.parse(new Date());
+    // $.ajax({
+    //     type:'post',
+    //     url:"{:url('Systems/login_task')}",
+    //     data:{timestamp:timestamp},
+    //     timeout : 100000000, //超时时间设置，单位毫秒
+    //     success:function(){
+    //         // 执行定时任务
+    //     }
+    // });
+</script>
+<!-- 新订单提醒-e -->

@@ -1,0 +1,99 @@
+{include file="public/header" /}
+
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>公众号设置</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">           
+                    <div class="panel-body">     
+                        <div class="setting_step app_setting">
+                             <a class="step" href="{:url('step_0',array('id'=>$id))}">1.增加基本信息</a>
+
+                             <a class="step step_cur" style="cursor:deault" >2.配置公众平台</a>
+                             <a class="step step_cur_1" style="cursor:deault">3.保存接口配置</a> 
+                      </div>     
+                      
+                       <div class="tab-content"> 
+                          <!-- 表单 -->
+                          <form class="form-horizontal bind_step_form" method="post" action="{:url('step_2',array('id'=>$id))}" id="form">
+                            <!-- 基础文档模型 -->
+                            <div class="tab-pane in tab1" id="tab1">
+                              <div class="item_wrap">
+                              <div class="form-item cf toggle-appid">
+                                <label class="item-label"> AppID <span class="check-tips"> （应用ID） </span></label>
+                                <div class="controls input-group col-sm-3">
+                                  <input type="text" value="{$info.appid}" name="appid" class="text form-control">
+                                </div>
+                              </div>
+                              <div class="form-item cf toggle-secret">
+                                <label class="item-label"> AppSecret <span class="check-tips"> （应用密钥） </span></label>
+                                <div class="controls input-group col-sm-3">
+                                  <input type="text" value="{$info.secret}" name="secret" class="text form-control">
+                                </div>
+                              </div>
+                              
+                              <div class="form-item cf toggle-encodingaeskey">
+                                <label class="item-label"> EncodingAESKey <span class="check-tips"> （安全模式下必填） </span></label>
+                                <div class="controls input-group col-sm-3">
+                                  <input type="text" value="{$info.encodingaeskey}" name="encodingaeskey" class="text form-control">
+                                </div>
+                              </div>
+                              <!--
+                              <div class="form-item cf toggle-secret">
+                                <label class="item-label"> mchid <span class="check-tips"> （商户号） </span></label>
+                                <div class="controls input-group col-sm-3">
+                                  <input type="text" value="{$info.mchid}" name="mchid" class="text form-control">
+                                </div>
+                              </div>
+                              <div class="form-item cf toggle-secret">
+                                <label class="item-label"> PayKey <span class="check-tips"> （支付密钥） </span></label>
+                                <div class="controls input-group col-sm-3">
+                                  <input type="text" value="{$info.paykey}" name="paykey" class="text form-control">
+                                </div>
+                              </div>
+                              -->
+                              </div>
+                              <div class="form-item cf bind_step_form_next_item">
+                                <button class="btn btn-primary ajax-post" type="submit" target-form="form-horizontal"><i class="fa fa-save"></i> 保存</button>&nbsp;
+                                <a class="btn btn-danger" href="javascript:history.go(-1);"><i class="fa fa-close"></i> 返回</a>
+                                <br/>
+                                <p style="padding:20px 0;">配置信息遇到问题？<a href="javascript:;" target="_blank">点击查看接入指引</a></p>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                </div>
+
+
+                </div>
+				</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

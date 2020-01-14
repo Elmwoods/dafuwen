@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="form" action="" method="post">
+   用户ID<input type="text" name="user_id">
+   游戏ID<input type="text" name="id">
+    <input type="submit" value="提交">
+</form>
+<script src="__STATIC__/js/jquery-3.1.1.min.js"></script>
+<script src="__STATIC__/js/layer.js"></script>
+<script src="__STATIC__/js/ajaxplugin.js"></script>
+<script>
+    $('#get').click(function(){
+        $('#form').tokenform(function(data){
+
+        },1);
+    });
+
+
+    ws = new WebSocket("ws://qukuailiangou.fujinapp.cn:8282");
+    ws.onopen = function() {
+        //ws.send('{action:get_time,msg:"发送消息"}');
+        //alert("连接成功");
+        //ws.send('tom');
+        console.log('连接成功 ');
+        //alert("给服务端发送一个字符串：tom");
+    };
+    ws.onmessage = function(e) {
+        console.log(e.data);
+      //  alert("收到服务端的消息：" + e.data);
+    };
+</script>
+</body>
+</html>

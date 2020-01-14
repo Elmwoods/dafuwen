@@ -1,0 +1,72 @@
+{include file="public/header" /}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>日志列表</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->
+            <div class="row">
+                <div class="col-sm-12">                                             
+                    <form name="admin_list_sea" class="form-search" method="post" action="{:url('send_sms')}">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input type="text" id="keyword" class="form-control" name="keyword" value="{$keyword}" placeholder="请输入手机号码" />
+                                <span class="input-group-btn"> 
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button> 
+                                </span>
+                            </div>
+                        </div>
+                    </form>                         
+                </div>
+            </div>
+            <!--搜索框结束-->
+            <div class="hr-line-dashed"></div>
+
+            <div class="example-wrap">
+                <div class="example">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="long-tr">
+                                <th width="5%">序号</th>
+                                <th width="5%">手机号</th>
+                                <th width="15%">发送时间</th>
+                                <th width="8%">验证码</th>
+                                <th width="10%">发送状态</th>
+                                <th width="6%">短信内容</th>
+                                <th width="10%">发送场景</th>
+                                <th width="8%">异常提示内容</th>
+                            </tr>
+                        </thead>
+
+                        {volist name='smsList' id='vo' key='key'}
+                            <tr class="long-td">
+                                <td>{$key}</td>
+                                <td>{$vo.mobile}</td>
+                                <td>{$vo.add_time}</td>
+                                <td>{$vo.code}</td>
+                                <td>{$vo.status_zn}</td>
+                                <td>{$vo.msg}</td>
+                                <td>{$vo.scene_zn}</td>
+                                <td>{$vo.error_msg}</td>
+                            </tr>
+                        {/volist}
+
+                    </table>
+                    <div class="page">
+                        {$smsList->render()}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Panel Other -->
+</div>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

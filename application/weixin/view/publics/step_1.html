@@ -1,0 +1,71 @@
+{include file="public/header" /}
+
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>公众号设置</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">           
+                    <div class="panel-body">     
+
+                       <div class="setting_step app_setting">
+                             <a class="step step_cur" href="{:url('step_0',array('id'=>$id))}">1.增加基本信息</a>
+
+                             <a class="step step_cur_1" style="cursor:deault" >2.配置公众平台</a>
+                             <a class="step " style="cursor:deault">3.保存接口配置</a> 
+                      </div>
+
+                       <div class="tab-content bind_step_form"> 
+                  <div class="item_wrap" style="width:600px;">
+                      <strong>请在公众平台开发者中心里的服务器配置录入以下参数</strong>
+                      <p>URL(服务器地址)：<span style="color: #FF0000">
+                      {:SITE_URL.url('home/weixin/index',array('id'=>$id))}
+                      </span><br>
+                      Token(令牌)：<span style="color: #F00">weiphp</span><br>
+                      EncodingAESKey(消息加解密密钥)：点击随机生成得到密钥，不需要自己填写<br>
+                      消息加解密方式： 根据自己的需要选择其中一种
+                      </p>
+                      <p>&nbsp;</p>
+                    </div>
+              <div class="bind_step_form_next_item">
+                <a class="btn btn-primary submit-btn" href="{:url('step_2',array('id'=>$id))}">下一步</a>
+                &nbsp;
+                <a class="btn btn-danger" href="javascript:history.go(-1);"><i class="fa fa-close"></i> 返回</a>
+
+              <br/>
+                <p style="padding:20px 0;">配置信息遇到问题？<a href="javascript:;" target="_blank">点击查看接入指引</a></p>
+              </div>
+            
+      </div>
+
+                </div>
+				</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

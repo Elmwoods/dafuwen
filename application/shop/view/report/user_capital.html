@@ -1,0 +1,88 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 用户列表</h3>
+                </div>
+                <div class="ibox-content">
+                    <div class="navbar navbar-default">
+                            <form action="{:U('shop/Report/export_capital')}" id="search-form2" class="navbar-form form-inline" method="post">
+                                <input type="hidden" name="user_ids" value="">
+                                <div class="form-group">
+                                    <label class="control-label" for="input-mobile">手机号码</label>
+                                    <div class="input-group">
+                                        <input type="text" name="mobile" value="" placeholder="手机号码" id="input-mobile" class="form-control">
+                                        <!--<span class="input-group-addon" id="basic-addon2"><i class="fa fa-search"></i></span>-->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">用户ID</label>
+                                    <div class="input-group">
+                                        <input type="text" name="user_id" value="" placeholder="用户ID"class="form-control">
+                                        <!--<span class="input-group-addon" id="basic-addon2"><i class="fa fa-search"></i></span>-->
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <input type="hidden" name="order_by" value="user_id">
+                                	<input type="hidden" name="sort" value="desc">
+                                	<a onclick="ajax_get_table('search-form2',1)" id="button-filter search-order" class="btn btn-primary pull-right"><i class="fa fa-search"></i> 筛选</a>
+                                 </div>
+                                <!--<button type="button" onclick="send_message(0);" class="btn btn-primary"><i class="fa"></i> 发送站内信</button>-->
+                                <!--
+                                -->
+								 <a href="javascript:exportReport()" class="btn btn-info pull-right">导出表格</a>
+                            </form>
+                    </div>
+                    <div id="ajax_return">
+
+                    </div>
+                </div>
+            </div>
+        </div>        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<script>
+    $(document).ready(function(){
+        ajax_get_table('search-form2',1);
+
+    });
+
+    // ajax 抓取页面
+    function ajax_get_table(tab,page){
+        cur_page = page; //当前页面 保存为全局变量
+            $.ajax({
+                type : "POST",
+                url:"/shop/Report/ajaxcapital/p/"+page,//+tab,
+                data : $('#'+tab).serialize(),// 你的formid
+                success: function(data){
+                    $("#ajax_return").html('');
+                    $("#ajax_return").append(data);
+                }
+            });
+    }
+
+
+    function exportReport(){
+        var selected_ids = '';
+        $('.trSelected' , '#ajax_return').each(function(i){
+            selected_ids += $(this).data('order-id')+',';
+        });
+
+        if(selected_ids != ''){
+            $('input[name="user_ids"]').val(selected_ids.substring(0,selected_ids.length-1));
+            $('#search-form2').submit();
+        }else{
+            layer.msg('至少选择一项',{icon:2});
+        }
+
+    }
+
+
+</script>
+</body>
+</html>

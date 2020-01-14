@@ -1,0 +1,210 @@
+{include file="public/header" /}
+<link rel="stylesheet" type="text/css" href="/static/admin/webupload/webuploader.css">
+<link rel="stylesheet" type="text/css" href="/static/admin/webupload/style.css">
+<style>
+.file-item{float: left; position: relative; width: 110px;height: 110px; margin: 0 20px 20px 0; padding: 4px;}
+.file-item .info{overflow: hidden;}
+.uploader-list{width: 100%; overflow: hidden;}
+</style>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>编辑活动</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" name="edit" id="edit" method="post" action="">
+                    <input type="hidden" name="id" value="{$article.id}">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">标题：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="title" type="text" class="form-control" name="title" value="{$article.title}">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">所属分类：</label>
+                            <div class="input-group col-sm-4">
+                                <select class="form-control m-b chosen-select" name="cate_id" id="cate_id">
+                                    <option value="">==请选择==</option>
+                                    {if !empty($cate)}
+                                        {foreach name="cate" item="vo"}
+                                            <option value="{$vo.id}" {if condition="$article['cate_id'] eq $vo['id']"}selected{/if}>{$vo.name}</option>
+                                        {/foreach}
+                                    {/if}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">描述：</label>
+                            <div class="input-group col-sm-4">
+                                <textarea type="text" rows="5" name="remark" id="remark" placeholder="输入文章描述" class="form-control">{$article.remark}</textarea>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">封面：</label>
+                            <div class="controls uploadrow2" data-max="1" title="点击修改图片" rel="p_cover">
+                                    <input type="hidden" id="data_photo" name="photo" value="{$article.photo}">
+                                    <input type="hidden" name="cover" id="cover_id_p_cover" data-callback="uploadImgCallback" value=""/>
+                                    <div class="upload-img-box" rel="img"  >
+                                      <div class="upload-pre-item2">
+                                            <img width="100" height="100" src="{$article.photo}"/>
+                                                                                          </div>
+                                        <em class="edit_img_icon">&nbsp;</em>
+                                    </div>
+                              </div>
+                        </div>
+						
+                        <div class="hr-line-dashed"></div>                          
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label " for="myEditor">内容：</label>
+                            <div class="input-group col-sm-9">
+                                <textarea name="content" style="width:90%" id="myEditor">{$article.content}</textarea>
+                                {:hook('adminArticleEdit', array('name'=>'content','value'=>''))}
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">是否推荐：</label>
+                            <div class="input-group col-sm-4">
+                                <div class="radio i-checks">
+                                    {if condition="$article['is_tui'] eq 1 "}
+                                        <input type="radio" name='is_tui' value="1" checked="checked" />是&nbsp;&nbsp;
+                                        <input type="radio" name='is_tui' value="0" />否
+                                    {else/}
+                                        <input type="radio" name='is_tui' value="1" />是&nbsp;&nbsp;
+                                        <input type="radio" name='is_tui' value="0" checked="checked" />否
+                                    {/if}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">状&nbsp;&nbsp;态：</label>
+                            <div class="col-sm-6">
+                                <div class="radio ">                                        
+                                    <input type="checkbox" name='status' value="{$article.status|default=1}" 
+									class="js-switch" {if condition="@$article.status heq 0"}un{/if}checked />&nbsp;&nbsp;默认开启                                     
+                                </div>
+                            </div>
+                        </div>
+						<input type="hidden" name='status' value="{$article.status|default=1}" >
+        
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-3">
+                                <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> 保存</button>&nbsp;&nbsp;&nbsp;
+                                <a class="btn btn-danger" href="javascript:history.go(-1);"><i class="fa fa-close"></i> 返回</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+  {include file="public/footer" /}
+
+<script type="text/javascript">
+
+$(function(){
+    
+    //初始化上传图片插件
+    initUploadImg();
+});
+
+function uploadImgCallback(name,id,src){
+    $('.editing img').attr('src',src);
+    $('#data_photo').val(src);
+    $('.editing input[name="cover_id"]').val(id);
+}
+
+function uploadImgCallback2(name,id,src){
+    $('.editing img').attr('src',src);
+    $('#data_file').val(src);
+    $('.editing input[name="file_id"]').val(id);
+}
+</script>
+<script type="text/javascript">
+
+    $(function(){
+        $('#edit').ajaxForm({
+            beforeSubmit: checkForm, // 此方法主要是提交前执行的方法，根据需要设置
+            success: complete, // 这是提交后的方法
+            dataType: 'json'
+        });
+		
+		$('input[type="checkbox"][name=status]').change(function() {
+			$('input[name=status]').val($(this).get(0).checked ? 1: 0);
+		});
+
+        function checkForm(){
+            if( '' == $.trim($('#title').val())){
+                layer.msg('标题不能为空', {icon: 5,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                });
+                return false;
+            } else if( '' === $.trim($('#cate_id').val())){
+                layer.msg('请选择分类', {icon: 5,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                });
+                return false;
+            } /*else if( '' == $.trim($('#data_photo').val())){
+                layer.msg('请上传封面图片', {icon: 5,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                });
+                return false;
+            }*/
+
+     }
+
+        function complete(data){
+            if(data.code == 1){
+                layer.msg(data.msg, {icon: 6,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                    window.location.href="{:url('article/index')}";
+                });
+            }else{
+                layer.msg(data.msg, {icon: 5,time:1500,shade: 0.1}, function(index){
+                    layer.close(index);
+                });
+                return false;
+            }
+        }
+
+    });
+
+
+    //IOS开关样式配置
+   var elem = document.querySelector('.js-switch');
+        var switchery = new Switchery(elem, {
+            color: '#1AB394'
+        });
+    var config = {
+        '.chosen-select': {},                    
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
+
+
+</script>
+</body>
+</html>

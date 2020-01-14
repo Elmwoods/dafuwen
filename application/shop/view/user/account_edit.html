@@ -1,0 +1,123 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <section class="content">
+    <!-- Main content -->
+    <div class="container-fluid">
+    <div class="container-fluid">
+        <!--新订单列表 操作信息-->
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h3 class="panel-title"><i class="fa fa-list"></i> 管理资金</h3>
+            </div>
+            <div class="ibox-content">
+
+            <form class ="myform" method="post" action="">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <div class="row">
+                            <td class="text-right col-sm-2">推廣收益：</td>
+                            <td colspan="3">
+                                <select name="money_act_type_1" id="money_act_type_1" class="input-sm">
+                                    <option value="1">增加</option>
+                                    <option value="0">减少</option>
+                                </select>
+                                <input type="text" name="user_money" class="input-sm" value="{$_REQUEST['user_money']|default='0'}">可用推廣收益：￥{$user.user_money}
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="row">
+                            <td class="text-right col-sm-2">微分：</td>
+                            <td colspan="3">
+                                <select name="point_act_type_2" id="point_act_type_2" class="input-sm">
+                                    <option value="1">增加</option>
+                                    <option value="0">减少</option>
+                                </select>
+                                <input type="text" name="pay_points" value="0" class="input-sm">
+                                可用微分：{$user.pay_points}
+                            </td>
+                        </div>
+                    </tr>
+                     <!--<tr>-->
+                        <!--<div class="row">-->
+                            <!--<td class="text-right col-sm-2">DOGE：</td>-->
+                            <!--<td colspan="3">-->
+                                <!--<select name="point_act_type_3" id="point_act_type_3" class="input-sm">-->
+                                    <!--<option value="1">增加</option>-->
+                                    <!--<option value="0">减少</option>-->
+                                <!--</select>-->
+                                <!--<input type="text" name="doge_money" value="0" class="input-sm">-->
+                                <!--可用DOGE：{$user.doge_money}-->
+                            <!--</td>-->
+                        <!--</div>-->
+                    <!--</tr>-->
+                     <tr>
+                        <div class="row">
+                            <td class="text-right col-sm-2">HKT：</td>
+                            <td colspan="3">
+                                <select name="point_act_type_4" id="point_act_type_4" class="input-sm">
+                                    <option value="1">增加</option>
+                                    <option value="0">减少</option>
+                                </select>
+                                <input type="text" name="pig_currency" value="0" class="input-sm">
+                                可用DOGE：{$user.pig_currency}
+                            </td>
+                        </div>
+                    </tr>
+                <!--     <tr>
+                        <div class="row">
+                            <td class="text-right col-sm-2">冻结金额：</td>
+                            <td colspan="3">
+                                <select name="frozen_act_type" id="frozen_act_type" class="input-sm">
+                                    <option value="1">增加</option>
+                                    <option value="0">减少</option>
+                                </select>
+                                <input type="text" name="frozen_money" value="0" class="input-sm">
+                                冻结资金：{$user.frozen_money}
+                                <br/>
+                                单位元, 当操作冻结资金时，金额那一栏不用填写数值。
+                            </td>
+                        </div>
+                    </tr> -->
+
+                 <!--    <tr>
+                        <div class="row">
+                            <td class="text-right col-sm-2">操作备注：</td>
+                            <td colspan="3">
+                                    <textarea name="desc" placeholder="请输入操作备注" rows="3" class="form-control">{$Request.param.desc}</textarea>
+                            </td>
+                        </div>
+                    </tr> -->
+                    <tr>
+                        <div class="row">
+                            <td class="text-right col-sm-2">操作备注：</td>
+                            <td colspan="3">
+                                    <textarea name="desc" placeholder="请输入操作备注" rows="3" class="form-control">后台充值</textarea>
+                            </td>
+                        </div>
+                    </tr>
+
+                    <tr>
+                        <div class="row">
+                            <td colspan="4">
+                                <div class="form-group text-center">
+                                    <button class="btn btn-primary ajax-post" target-form="myform" type="submit" id="disabled">提交</button>
+                                    <button onclick="history.go(-1)"  class="btn btn-primary" type="button">返回</button>
+                                </div>
+                            </td>
+                        </div>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </form>
+
+            </div>
+        </div>
+
+    </div>    <!-- /.content -->
+        </section>
+</div>
+
+

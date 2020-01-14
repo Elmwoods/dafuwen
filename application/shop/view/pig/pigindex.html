@@ -1,0 +1,79 @@
+                    <div>数量：{if $count}{$count}{else}0{/if}</div>
+                    <form method="post" enctype="multipart/form-data" target="_blank" id="form-order">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <!-- <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);"></td> -->
+    
+                                    <td class="text-center">
+                                        <a href="javascript:sort('id');">ID</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="javascript:sort('nickname');">出售人手机号</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="javascript:sort('pig_level');">地皮等级</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="javascript:sort('total_amount');">出售状态</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="javascript:sort('email');">價值(金额)</a>
+                                    </td>
+                                    
+                                    <td class="text-center">
+                                        <a href="javascript:void(0);">收购人手机号</a>
+                                    </td>
+
+                                     <td class="text-center">
+                                        <a href="javascript:void(0);">指定人用户ID</a>
+                                    </td>
+                                    <td class="text-center">修改價值(金额)</td>
+                                    <td class="text-center">操作</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {volist name="userList" id="list"}
+                                    <tr>
+                                    <!--     <td class="text-center">
+                                            <input type="checkbox" name="selected[]" value="{$list['id']}">
+                                            <input type="hidden" name="shipping_code[]" value="flat.flat">
+                                        </td> -->
+                                        <td class="text-center">{$list.id}</td>
+                                        <td class="text-center">{$list.name}</td>
+                                        <td class="text-center">{$list.pig_level}</td>
+                                        <td class="text-center">{if $list.is_able_sale == 1}可出售{else}不可出售{/if}</td>
+                                        <td class="text-center">{$list.price}</td>
+                                        <td class="text-center">{$list.first_name}</td>
+                                        <td class="text-center">{$list.appoint_user_id}</td>
+                                        
+                        
+                                        <td class="text-center">
+                                            <!-- <a href="{:U('shop/user/detail',array('id'=>$list['user_id']))}" data-toggle="tooltip" title="" class="btn btn-info" data-original-title="查看详情"><i class="fa fa-eye"></i></a>
+                                            <a href="{:U('shop/user/address',array('id'=>$list['user_id']))}" data-toggle="tooltip" title="" class="btn btn-info" data-original-title="收货地址"><i class="fa fa-home"></i></a> -->
+
+                                            <!-- <a href="javascript:;" onclick="change_pig({$list['id']})" data-toggle="tooltip" title="" class="btn btn-info" data-original-title="更改上级"><i class="fa fa-pencil"></i></a> -->
+                                            
+                                            
+                                            <a class="btn btn-primary" href="{:U('Pig/edit_price',array('act'=>'edit','id'=>$list.id))}"><i class="fa fa-pencil"></i>修改價值</a>
+                                      
+                                        </td>
+                                        <td class="text-center">
+                                        <a class="btn btn-primary" href="{:U('Pig/change',array('act'=>'edit','id'=>$list.id))}"><i class="fa fa-pencil"></i>指定ID</a>
+                                        </td>
+                                    </tr>
+                                {/volist}
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="pull-right">{$page}</div>
+                    </div>
+<script>
+    $(".pagination  a").click(function(){
+        var page = $(this).data('p');
+        ajax_get_table('search-form2',page);
+    });
+</script>

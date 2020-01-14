@@ -1,0 +1,10 @@
+模式一：
+http://qc.dongfeng.com/addons/execute/test-demo-index.html
+
+test（插件模块名）-demo（控制器名）-index（方法名）.html
+
+模式二：
+http://qc.dongfeng.com/?s=/addons/execute/test-Action-link
+test（插件模块名）-Action（控制器名）-link（方法名）
+
+

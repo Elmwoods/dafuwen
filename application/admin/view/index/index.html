@@ -1,0 +1,91 @@
+{include file="public/header"/}
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>待处理订单</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{$count.handle_order}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>商品数量</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{$count.goods}</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>会员总数</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{$count.users}</h1>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-12">
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>新增订单</th>
+                    <th>今天访问</th>
+                    <th>新增会员</th>
+                    <th>游戏情况</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr>
+                    <td>{$count.new_order}</td>
+                    <td>{$count.today_login}</td>
+                    <td>{$count.new_users}</td>
+                    <td>{$game_info}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+</div>
+
+
+    <!-- 中间折线 -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <i class="fa fa-cogs"></i> 系统信息
+                </div>
+                <div class="panel-body">
+                    <p><i class="fa fa-sitemap"></i> 框架版本：ThinkPHP{$info.think_v}
+                    </p>
+                    <p><i class="fa fa-windows"></i> 服务环境：{$info.web_server}
+                    </p>
+                    <p><i class="fa fa-warning"></i> 上传附件限制：{$info.onload}
+                    </p>
+                    <p><i class="fa fa-credit-card"></i> PHP 版本：{$info.phpversion}
+                    </p>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+
+</div>
+
+{include file="public/footer" /}
+
+</body>
+</html>

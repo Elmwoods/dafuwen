@@ -1,0 +1,123 @@
+{include file="public/header" /}
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>用户列表</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->           
+            <div class="row">
+                <div class="col-sm-12">   
+                <div  class="col-sm-2" style="width: 100px">
+                    <div class="input-group" >  
+                        <a href="{:url('userAdd')}"><button class="btn btn-outline btn-primary" type="button">添加用户</button></a> 
+                    </div>
+                </div>                                            
+                    <form name="admin_list_sea" class="form-search" method="get" action="{:url('index')}">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input type="text" id="key" class="form-control" name="key" value="{$val}" placeholder="输入需查询的用户名" />   
+                                <span class="input-group-btn"> 
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button> 
+                                </span>
+                            </div>
+                        </div>
+                    </form>                         
+                </div>
+            </div>
+            <!--搜索框结束-->
+            <div class="hr-line-dashed"></div>
+
+            <div class="example-wrap">
+                <div class="example">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="long-tr">
+                                <th>ID</th>
+                                <th>管理员名称</th>
+                                <th>头像</th>
+                                <th>管理员角色</th>
+                                <th>登录次数</th>
+                                <th>上次登录ip</th>
+                                <th>上次登录时间</th>
+                                <th>真实姓名</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                            <tbody id="list-content">
+                                {volist name="lists" id="list"}
+                                    <tr>
+                                        <td class="text-center">{$list.id}</td>
+                                        <td class="text-center">{$list.username}</td>
+                                        <td>
+                                            <img src="/uploads/face/{$list.portrait}" class="img-circle" style="width:35px;height:35px" onerror="this.src='/static/admin/images/head_default.gif'"/>                
+                                        </td>
+                                        <td  class="text-center">{$list.title}</td>                                  
+                                        <td class="text-center">{$list.loginnum}</td>
+                                        <td class="text-center">{$list.last_login_ip}</td>
+                                        <td class="text-center">{$list.last_login_time|date='Y-m-d H:i',###}</td>
+                                        <td class="text-center">{$list.real_name}</td>
+                                        <td  class="text-center">
+                                            {if condition="$list.id neq 1"}
+                                                {if condition="$list.status eq 1"}
+                                                <a class="red" href="javascript:;" onclick="user_state({$list.id});">
+                                                    <div id="{$list.id}"><span class="label label-info">开启</span></div>
+                                                </a>
+                                                {else/}
+                                                <a class="red" href="javascript:;" onclick="user_state({$list.id});">
+                                                    <div id="zt{$list.id}"><span class="label label-danger">禁用</span></div>
+                                                </a>
+                                                {/if}
+                                            {/if}
+                                        </td>
+                                        <td  class="text-center">
+                                        <a href="javascript:;" onclick="userEdit({$list.id})" {if condition="$admin_id != 1"} style="display: none;" {/if} class="btn btn-primary btn-xs">
+                                            <i class="fa fa-paste"></i> 编辑</a>&nbsp;&nbsp;
+                                            {if condition="$list.id neq 1"}
+                                        <a href="javascript:;" onclick="userDel({$list.id})" class="btn btn-danger btn-xs">
+                                            <i class="fa fa-trash-o"></i> 删除</a>
+                                            {/if}
+                                </td>
+                                    </tr>
+                            {/volist}
+                        </tbody>
+                    </table>
+                    <div style="text-align: right;">
+                        共{$count}个用户
+                        <!-- 分页 -->
+                    </div>
+                    <div id="Pages"> {$page} </div>
+                </div>
+            </div>
+            <!-- End Example Pagination -->
+        </div>
+    </div>
+</div>
+<!-- End Panel Other -->
+</div>
+
+{include file="public/footer" /}
+
+<script type="text/javascript">
+
+//编辑用户
+function userEdit(id){
+    location.href = './userEdit/id/'+id+'.html';
+}
+
+//删除用户
+function userDel(id){
+    lunhui.confirm(id,'{:url("userDel")}');
+}
+
+//用户状态
+function user_state(id){
+    lunhui.status(id,'{:url("user_state")}');
+}
+
+</script>
+</body>
+</html>

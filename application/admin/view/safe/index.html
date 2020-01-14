@@ -1,0 +1,79 @@
+{include file="public/header" /}
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>安全配置</h5>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-sm-10">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1" aria-expanded="true">图形验证码</a>
+                        </li>
+                      
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                            {volist name="code" id="vo"}
+                                <div class="panel-body">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">{$vo.title}</label>
+                                        <div class="col-sm-10">
+                                            {if condition="$vo.status == 1"}
+                                                <a class="red" href="javascript:;" onclick="status_config({$vo.id});">
+                                                    <div id="zt{$vo.id}"><span class="label label-info">开启</span></div>
+                                                </a>
+                                                {else/}
+                                                 <a class="red" href="javascript:;" onclick="status_config({$vo.id});">
+                                                    <div id="zt{$vo.id}"><span class="label label-danger">禁用</span></div>
+                                                </a>
+                                            {/if}
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                            {/volist}
+                        </div>
+
+
+                </div>
+            </div>
+
+    
+</div>
+</div>
+       
+</div>
+
+
+{include file="public/footer" /}
+
+<script type="text/javascript">
+
+    //用户状态
+ function status_config(val){
+    $.post('{:url("config/status_config")}',
+    {id:val},
+    function(data){
+         
+        if(data.code==1){
+            var a='<span class="label label-danger">禁用</span>'
+            $('#zt'+val).html(a);
+            layer.msg(data.msg,{icon:2,time:1500,shade: 0.1,});
+            return false;
+        }else{
+            var b='<span class="label label-info">开启</span>'
+            $('#zt'+val).html(b);
+            layer.msg(data.msg,{icon:1,time:1500,shade: 0.1,});
+            return false;
+        }         
+        
+    });
+    return false;
+}
+
+</script>
+</body>
+</html>

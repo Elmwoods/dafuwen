@@ -1,0 +1,99 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+	<section class="content">
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	           	<div class="box-header">
+	           		<div class="ibox-title">
+                    <h3 class="panel-title"><i class="fa fa-list"></i>审核列表</h3>
+                	</div>   
+	             </div>	    
+	             <!-- /.box-header -->
+	             <div class="box-body">	             
+	           		<div class="row">
+	            	<div class="col-sm-12">
+		              <table id="list-table" class="table table-bordered table-hover" role="grid" aria-describedby="example1_info">
+		                 <thead>
+		                   <tr align="center">
+			                   <th>id</th>
+			                   <th>用户id</th>
+			                   <th>用户名</th>
+			                   <th>申请身份级别</th>
+			                   <th>审核状态</th>
+			                   <th>创建时间</th>
+			                   <th>审核更新时间</th>
+			                   <th>备注信息</th>
+			                   <th>操作</th>
+		                   </tr>
+		                 </thead>
+						<tbody>
+						  {foreach name="list" item="vo" key="k" }
+						  	<tr role="row" align="center">
+		                    <td>{$vo.id}</td>
+		                    <td>{$vo.user_id}</td>
+		                    <td>{$vo.nickname}</td>
+		                    <td>
+		                    	{switch name="$vo.level"}
+		                     	    {case value="1"}粉丝{/case}
+		                     	    {case value="2"}金卡{/case}
+		                     	    {case value="3"}钻卡{/case}
+		                     	    {case value="4"}公司{/case}
+		                     	{/switch}
+		                    </td>
+		                    <td>
+		                    	{switch name="$vo.status"}
+		                     	    {case value="-1"}审核不通过{/case}
+		                     	    {case value="0"}待审核{/case}
+		                     	    {case value="1"}审核通过{/case}
+		                     	{/switch}
+		                    </td>
+		                    <td>{if condition="$vo.create_time eq 0"}{else/}{$vo.create_time|date="Y-m-d H:i:s",###}
+                                    {/if}
+                            </td>
+		                    <td>{if condition="$vo.update_time eq 0"}{else/}{$vo.update_time|date="Y-m-d H:i:s",###}
+                                    {/if}
+                            </td>
+		                    <td>{$vo.remark}</td>
+		                    <td>
+		                      <a class="btn btn-primary" href="{:U('User/check',array('act'=>'edit','id'=>$vo['id']))}"><i class="fa fa-pencil"></i></a>
+							</td>
+		                   </tr>
+		                  {/foreach}
+		                </tbody>
+		   
+		               </table>
+	               </div>
+	          </div>
+              <div class="row">
+              	    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">{$page}</div>		
+              </div>
+	          </div><!-- /.box-body -->
+	        </div><!-- /.box -->
+       	</div>
+       </div>
+   </section>
+</div>
+<script>
+function delfun(obj){
+	if(confirm('确认删除')){		
+		$.ajax({
+			type : 'post',
+			url : $(obj).attr('data-url'),
+			data : {act:'del',level_id:$(obj).attr('data-id')},
+			dataType : 'json',
+			success : function(data){
+				if(data){
+					$(obj).parent().parent().remove();
+				}else{
+					layer.alert('删除失败', {icon: 2});  //alert('删除失败');
+				}
+			}
+		})
+	}
+	return false;
+}
+</script>  
+</body>
+</html>

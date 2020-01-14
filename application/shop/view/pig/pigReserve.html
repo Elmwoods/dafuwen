@@ -1,0 +1,166 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3 class="panel-title"><i class="fa fa-list"></i>預約列表</h3>
+                </div>
+                <div class="ibox-content">
+                    <div class="navbar navbar-default">
+                            <form action="{:U('shop/Pig/pigsert')}" id="search-form2" class="navbar-form form-inline" method="post">
+
+                               <!--  <div class="form-group">
+                                    <label class="control-label" for="input-order-id">订单编号</label>
+                                    <div class="input-group">
+                                        <input type="text" name="pig_order_sn" placeholder="订单编号" id="input-order-id" class="input-sm" style="width:100px;">
+                                    </div>
+                                </div> -->
+                                <div class="form-group">
+                                    <label class="control-label" for="input-order-id">預約人的手机号</label>
+                                    <div class="input-group">
+                                        <input type="text" name="mobile" placeholder="預約人的手机号" id="input-member-id" class="input-sm" style="width:180px;">
+                                    </div>
+                                </div>
+                                 
+                                <div class="form-group">
+                                   <select name="pig_level" class="input-sm" style="width:200px;">
+                                            <option value="">请选择地皮等级</option>
+                                            {foreach name="pig" item="v" key="k"}
+                                            <option value="{$v['id']}">{$v['goods_name']}</option>
+                                            {/foreach}
+                                    </select>
+                                </div>
+                             <!--    <div class="col-sm-3" id="data_5">
+                                    <div class="input-daterange input-group" id="datepicker">
+                                        <input type="text" class="input-mini form-control" placeholder="預約开始时间" name="start_time" id="start_time" value="{$Request.param.start_time}"/>
+                                        <span class="input-group-addon">--</span>
+                                        <input type="text" class="input-mini form-control" placeholder="預約结束时间" name="end_time" id="end_time" value="{$Request.param.end_time}" />
+                                    </div>
+                                </div> -->
+                                <div class="form-group">
+                                   <select name="reservation_status" class="input-sm" style="width:200px;">
+                                            <option value="">请选择預約状态</option>
+                                            <option value="0">未抢</option>
+                                            <option value="1">已抢</option>
+                                    </select>
+                                </div>
+
+                                <div class="input-group margin">                    
+                                    <div class="input-group-addon">
+                                        預約时间<i class="fa fa-calendar"></i>
+                                    </div>
+                                       <input type="text" id="start_time"  name="create_time" class="form-control pull-right">
+                                  </div>
+                      
+                                <div class="form-group">
+                                    <input type="hidden" name="order_by" value="order_id">
+                                    <input type="hidden" name="sort" value="desc">
+                                    <input type="hidden" name="user_id" value="{$Request.param.user_id}">
+                                </div>
+                                <div class="form-group">
+                                    <a href="javascript:void(0)" onclick="ajax_get_table('search-form2',1)" id="button-filter search-order" class="btn btn-primary"><i class="fa fa-search"></i> 筛选</a>
+                                </div>
+                                <div class="form-group">
+                                    <!-- <a href="{:url('Order/add_order')}" class="btn btn-primary"><i class="fa fa-search"></i>添加订单</a> -->
+                                </div>                                
+                                <!-- <button type="submit" class="btn btn-default pull-right"><i class="fa fa-file-excel-o"></i>&nbsp;导出excel</button>                                -->
+                            </form>
+                    </div>
+                    <div id="ajax_return">
+
+                    </div>
+                </div>
+            </div>
+        </div>        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<script>
+    $(document).ready(function(){
+        ajax_get_table('search-form2',1);
+
+
+    });
+
+    // ajax 抓取页面
+    function ajax_get_table(tab,page){
+        cur_page = page; //当前页面 保存为全局变量
+            $.ajax({
+                type : "POST",
+                url:"/shop/pig/pigsert/p/"+page,//+tab,
+                data : $('#'+tab).serialize(),// 你的formid
+                success: function(data){
+                    $("#ajax_return").html('');
+                    $("#ajax_return").append(data);
+                }
+            });
+    }
+
+    $('#data_5 .input-daterange').datepicker({
+        format:'yyyy-mm-dd ',
+        keyboardNavigation: false,
+        forceParse: false,
+        autoclose: true,
+        minViewMode:0
+    });
+
+    /**
+     * 更改上级用户
+     * @param id 需要更改的用户id
+     */
+    function change_pig(id){
+
+        var url = "{:Url('Pig/change_pig')}"+"?id="+id;
+        layer.open({
+            type: 2,
+            title: '填写指定ID',
+            shadeClose: true,
+            shade: 0.2,
+            area: ['40%', '40%'],
+            content: url,
+        });
+
+        
+    }
+$(document).ready(function() {
+    $('#start_time').daterangepicker({
+        format:"YYYY-MM-DD",
+        singleDatePicker: false,
+        showDropdowns: true,
+        minDate:'2019-01-01',
+        maxDate:'2030-01-01',
+        startDate:'2019-01-01',
+        showWeekNumbers: true,
+        timePicker: false,
+        timePickerIncrement: 1,
+        timePicker12Hour: true,
+        ranges: {
+           '今天': [moment(), moment()],
+           '昨天': [moment().subtract('days', 1), moment().subtract('days', 1)],
+           '最近7天': [moment().subtract('days', 6), moment()],
+           '最近30天': [moment().subtract('days', 29), moment()],
+           '上一个月': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+        },
+        opens: 'right',
+        buttonClasses: ['btn btn-default'],
+        applyClass: 'btn-small btn-primary',
+        cancelClass: 'btn-small',
+        locale : {
+            applyLabel : '确定',
+            cancelLabel : '取消',
+            fromLabel : '起始时间',
+            toLabel : '结束时间',
+            customRangeLabel : '自定义',
+            daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+            monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月','七月', '八月', '九月', '十月', '十一月', '十二月' ],
+            firstDay : 1
+        }
+    });
+});
+
+</script>
+</body>
+</html> 

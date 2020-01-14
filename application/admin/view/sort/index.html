@@ -1,0 +1,51 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>日志列表</h5>
+        </div>
+        <div class="ibox-content" style="width: 1200px">
+            <div class="input-group" >  
+                        <span class="btn btn-primary">共有{$count}人进入排位</span>
+                    </div>
+            <div class="hr-line-dashed"></div>
+            <div class="example-wrap">
+                <div class="example">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="long-tr">
+                                <th width="5%">用户ID</th>
+                                <th width="5%">用户名</th>
+                                <th width="5%">排位号码</th>
+<!--                                 <th width="15%">注册日期</th> -->
+                            </tr>
+                        </thead>
+                        
+                        <tbody id="list-content">
+                        	{volist name="list" id="list"}
+                                    <tr>
+                                        <td class="text-center">{$list.user_id}</td>
+                                        <td class="text-center">{$list.nickname}</td>
+                                        <td class="text-center">{$list.sort}</td>
+                                        <!-- <td class="text-center">{$list.reg_time|date='Y-m-d H:i',###}</td> -->
+                                    </tr>
+                                {/volist}
+                        </tbody>
+                    </table>
+                    <div style="text-align: right;">
+                        共{$count}条数据
+                        <!-- 分页 -->
+                    </div>
+                <div id="Pages"> {$page} </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Panel Other -->
+</div>
+{include file="public/footer" /}
+</body>
+</html>

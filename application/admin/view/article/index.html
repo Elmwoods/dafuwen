@@ -1,0 +1,153 @@
+{include file="public/header" /}
+
+<link rel="stylesheet" type="text/css" media="all" href="__CSS__/plugins/datapicker/datepicker3.css" />
+<script type="text/javascript" src="__JS__/plugins/datapicker/bootstrap-datepicker.js"></script>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>文章列表</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->           
+            <div class="row">
+                <div class="col-sm-12">   
+                <div  class="col-sm-2" style="width: 100px">
+                    <div class="input-group" >  
+                        <a href="{:url('add_article')}"><button class="btn btn-primary" type="button">发布文章</button></a> 
+                    </div>
+                </div>                                            
+                    <form name="admin_list_sea" class="form-search" method="get" action="{:url('index')}">
+                        <div class="col-sm-3" id="data_5">
+                            <div class="input-daterange input-group" id="datepicker">
+                                <input type="text" class="input-mini form-control" placeholder="开始时间" name="start_time" id="start_time" value="{$Request.param.start_time}"/>
+                                <span class="input-group-addon">-</span>
+                                <input type="text" class="input-mini form-control" placeholder="结束时间" name="end_time" id="end_time" value="{$Request.param.end_time}" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <select class="form-control m-b chosen-select" name="cate_id" id="cate_id">
+                                <option value="">==请选择分类==</option>
+                                {if !empty($cate)}
+                                    {foreach name="cate" item="vo"}
+                                        <option value="{$vo.id}" {if $Request.param.cate_id==$vo['id']}selected{/if}>{$vo.name}</option>
+                                    {/foreach}
+                                {/if}
+                            </select>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input type="text" id="key" class="form-control" name="key" value="{$Request.param.key}" placeholder="输入需查询的文章名称" />   
+                                <span class="input-group-btn"> 
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button> 
+                                </span>
+                            </div>
+                        </div>
+                    </form>                         
+                </div>
+            </div>
+            <!--搜索框结束-->
+            <div class="hr-line-dashed"></div>
+            <div class="example-wrap">
+                <div class="example">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="long-tr">
+                                <th width="3%">ID</th>
+                                <th width="15%">标题</th>
+                                <th width="5%">所属分类</th>
+                                <th width="5%">封面</th>
+                                <th width="10%">创建时间</th>
+                                <th width="10%">更新时间</th>
+                                <th width="5%">状态</th>
+                                <th width="5%">是否推荐</th>
+                                <th width="10%">操作</th>
+                            </tr>
+                        </thead>
+                            {volist name="list_data" id="vo"}
+                                <tr class="long-td">
+                                    <td>{$vo.id}</td>
+                                    <td>{$vo.title}</td>
+                                    <td>{$vo.name}</td>                                
+                                    <td><img src="{$vo.photo}" style="height: 30px" onerror="this.src='/static/admin/images/no_img.jpg'"/></td> 
+                                    <td>{$vo.create_time}</td> 
+                                    <td>{$vo.update_time}</td>
+                                    <td>
+                                        {if($vo.status==1)}
+                                            <a href="javascript:;" onclick="article_state({$vo.id});">
+                                                <div id="zt{$vo.id}"><span class="label label-info">开启</span></div>
+                                            </a>
+                                        {else}
+                                            <a href="javascript:;" onclick="article_state({$vo.id});">
+                                                <div id="zt{$vo.id}"><span class="label label-danger">禁用</span></div>
+                                            </a>
+                                        {/if}
+                                    </td> 
+                                    <td>
+                                        {if($vo.is_tui==1)}
+                                            是
+                                        {else}
+                                            否
+                                        {/if}
+                                    </td>                               
+                                    <td>
+
+                                        {if($vo.type==1)}
+                                            <a href="{:url('edit_article',['id'=>$vo.id])}" class="btn btn-primary btn-xs">
+                                            <i class="fa fa-paste"></i> 编辑</a>
+                                        {else}
+                                            <a href="{:url('edit_video',['id'=>$vo.id])}" class="btn btn-primary btn-xs">
+                                            <i class="fa fa-paste"></i> 编辑</a>
+                                        {/if}
+                                            <!-- &nbsp;&nbsp;
+                                        <a href="javascript:;" onclick="del_article({$vo.id})" class="btn btn-danger btn-xs">
+                                            <i class="fa fa-trash-o"></i> 删除</a> -->
+                                    </td>
+                                </tr>
+                            {/volist}
+           
+                        <tbody id="list-content"></tbody>
+                    </table><!-- 分页 -->
+                                <div id="Pages">  {$page} </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+{include file="public/footer" /}
+
+<script type="text/javascript">
+
+$('#data_5 .input-daterange').datepicker({
+        format:'yyyy-mm-dd',
+        keyboardNavigation: false,
+        forceParse: false,
+        autoclose: true,
+        minViewMode:0
+    });
+
+function Ajaxpage(){
+    location.reload(true);
+}
+
+//删除文章
+function del_article(id){
+    lunhui.confirm(id,'{:url("del_article")}');
+
+}
+
+//文章状态
+function article_state(id){
+    lunhui.status(id,'{:url("article_state")}');
+}
+
+</script>
+</body>
+</html>

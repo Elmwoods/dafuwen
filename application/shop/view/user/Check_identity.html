@@ -1,0 +1,102 @@
+{include file="public/header" /}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <section class="content ">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+  
+            </div>
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3 class="panel-title"><i class="fa fa-list"></i>  审核会员身份级别</h3>
+                </div>
+                <div class="panel-body ">   
+                    <!--表单数据-->
+                    <form method="post" id="position" action="{:U('shop/User/Check_identity_edit')}">                    
+                        <!--通用信息-->
+                    <div class="tab-content col-md-10">                       
+                        <div class="tab-pane active" id="tab_tongyong">                           
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <td class="col-sm-2">用户ID：</td>
+                                    <td class="col-sm-4">
+                                        {$list.user_id}        
+                                    </td>
+                                </tr>  
+
+                                <tr>
+                                    <td>用户昵称：</td>
+                                    <td>
+                                        {$users.nickname}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>真实名字：</td>
+                                    <td>
+                                        {$list.real_name}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>身份证号码：</td>
+                                    <td>
+                                        {$list.identity}
+                                    </td>
+                                </tr>
+                            
+
+                                <tr>
+                                    <td>提交审核时间：</td>
+                                    <td>
+                                    {if condition="$list.add_time eq 0"}{else/}{$list.add_time|date="Y-m-d H:i:s",###}
+                                    {/if}
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>审核状态：</td>
+                                    <td>
+                                        <select class="form-control m-b chosen-select" name="status" {if $list.status eq 1}disabled{/if} {if $list.status eq -1}disabled{/if}>
+                                            <!-- <option value="">==请操作审核==</option> -->
+                                            <option {if condition="@$list['status'] eq -1"}selected{/if} value="-1">审核不通过</option>
+                                            <option {if condition="@$list['status'] eq 0"}selected{/if} value="0">待审核</option>
+                                            <option {if condition="@$list['status'] eq 1"}selected{/if} value="1">审核通过</option>
+                                        </select>
+                                        <td class="col-sm-4">确认好身份及提交审核</td>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>审核不通过的原因：</td>
+                                    <td>
+                                        <textarea rows="5" cols="30" name="reason">{$send_mail|default=''}</textarea>
+                                    </td>
+                                    <td class="col-sm-4">审核通过不用填写</td>
+                                </tr>
+
+                                </tbody>
+                                {if $list['status'] eq 0} 
+                                <tfoot>
+                                    <tr>
+                                        <input type="hidden" name="user_id" value="{$list.user_id}">
+                                        <input type="hidden" name="id" value="{$list.id}">
+                                    <td class="text-right" colspan="3" style="text-align: center;"><input class="btn btn-primary" type="button" onclick="adsubmit()" value="审核"></td></tr>
+                                </tfoot>
+                                {/if}                               
+                                </table>
+                        </div>                           
+                    </div>              
+                    </form><!--表单数据-->
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+function adsubmit(){
+    $('#position').submit();
+}
+</script>
+</body>
+</html>

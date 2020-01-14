@@ -1,0 +1,129 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3 class="panel-title"><i class="fa fa-list"></i>已销毁的地皮</h3>
+                </div>
+                <div class="ibox-content">
+                    <div class="navbar navbar-default">
+                            <form action="{:U('shop/Pig/pig_delete_isuser')}" id="search-form2" class="navbar-form form-inline" method="post">
+
+                               <!--  <div class="form-group">
+                                    <label class="control-label" for="input-order-id">订单编号</label>
+                                    <div class="input-group">
+                                        <input type="text" name="pig_order_sn" placeholder="订单编号" id="input-order-id" class="input-sm" style="width:100px;">
+                                    </div>
+                                </div> -->
+                                <div class="form-group">
+                                    <label class="control-label" for="input-order-id">地皮的所属人手机号</label>
+                                    <div class="input-group">
+                                        <input type="text" name="mobile" placeholder="地皮的所属人手机号" id="input-member-mobile" class="input-sm" style="width:180px;">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                   <select id="pig_level" name="pig_level" class="input-sm" style="width:200px;">
+                                            <option value="">请选择地皮等级</option>
+                                            {foreach name="pig" item="v" key="k"}
+                                            <option value="{$v['id']}">{$v['goods_name']}</option>
+                                            {/foreach}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label" for="input-order-id">销毁的地皮ID</label>
+                                    <div class="input-group">
+                                        <input type="text" name="del_id" placeholder="销毁的地皮ID" id="input-member-mobile" class="input-sm" style="width:180px;">
+                                    </div>
+                                </div>
+                        <!--         <div class="form-group">
+                           <select name="is_able_sale" class="input-sm" style="width:200px;">
+                                    <option value="">请选择状态</option>
+                                    <option value="0">繁殖中</option>
+                                    <option value="1">成熟</option>
+                            </select>
+                        </div> -->
+                      
+                                <div class="form-group">
+                                    <input type="hidden" name="order_by" value="order_id">
+                                    <input type="hidden" name="sort" value="desc">
+                                    <input type="hidden" name="user_id" value="{$Request.param.user_id}">
+                                </div>
+                                <!-- <button type="button" onclick="daochu();" class="btn btn-primary"><i class="fa"></i> 导出excel</button> -->
+                                <div class="form-group">
+                                    <a href="javascript:void(0)" onclick="ajax_get_table('search-form2',1)" id="button-filter search-order" class="btn btn-primary"><i class="fa fa-search"></i> 筛选</a>
+                                </div>
+                                <div class="form-group">
+                                    <!-- <a href="{:url('Order/add_order')}" class="btn btn-primary"><i class="fa fa-search"></i>添加订单</a> -->
+                                </div>                                
+                                <!-- <button type="submit" class="btn btn-default pull-right"><i class="fa fa-file-excel-o"></i>&nbsp;导出excel</button>                                -->
+                            </form>
+                    </div>
+                    <div id="ajax_return">
+
+                    </div>
+                </div>
+            </div>
+        </div>        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<script>
+    $(document).ready(function(){
+        ajax_get_table('search-form2',1);
+
+
+    });
+
+    // ajax 抓取页面
+    function ajax_get_table(tab,page){
+        cur_page = page; //当前页面 保存为全局变量
+            $.ajax({
+                type : "POST",
+                url:"/shop/pig/pig_delete_isuser/p/"+page,//+tab,
+                data : $('#'+tab).serialize(),// 你的formid
+                success: function(data){
+                    $("#ajax_return").html('');
+                    $("#ajax_return").append(data);
+                }
+            });
+    }
+
+
+    /**
+     * 更改上级用户
+     * @param id 需要更改的用户id
+     */
+    function change_pig(id){
+
+        var url = "{:Url('Pig/change_pig')}"+"?id="+id;
+        layer.open({
+            type: 2,
+            title: '填写指定ID',
+            shadeClose: true,
+            shade: 0.2,
+            area: ['40%', '40%'],
+            content: url,
+        });
+
+        
+    }
+
+
+    function daochu(){
+       var mobile= $('#input-member-mobile').val();//出售人手机号     
+       var pig_level= $('#pig_level option:selected').val(); //猪的等级
+
+       var url = "{:U('admin/export/user_pig_delete')}";
+       url += "?mobile="+mobile+"&pig_level="+pig_level;
+       
+       window.location.href=url; 
+       //alert(start_time);
+    }
+
+
+</script>
+</body>
+</html> 

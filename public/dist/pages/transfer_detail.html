@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+<link rel="stylesheet" href="../assets/css/zpui.css"/>
+<link rel="stylesheet" href="../assets/css/all.css"/>
+<script src="../assets/js/page.js"></script>
+<style type="text/css">
+  /*隐藏图片的十字架*/
+  .weui-cell__bd:before,.weui-cell__bd:after{
+      display: none;
+  }
+</style>
+    <title>转让详情</title>
+  </head>
+
+  <body>
+    <div class="page verify">
+      <div class="page-hd">
+        <div class="header bor-1px-b">
+    <div class="header-left">
+        <a href="javascript:history.go(-1)" class="left-arrow"></a>
+    </div>
+    <div class="header-title">转让详情</div>
+    <div class="header-right">
+        <a href="#"></a>
+    </div>
+</div>
+      </div>
+      <div class="page-bd">
+        <!-- 页面内容 -->
+        <div class="makeOver color_3">
+          <div class="fs26">订单时间：<span class="fw_b establish_time"></span></div>
+          <div class="fs26">转让方：<span class="fw_b seller"></span></div>
+          <div class="fs26">转让方联系电话：<span class="fw_b seller_mobile"></span></div>
+          <div class="fs26">購置方：<span class="fw_b buyer"></span></div>
+          <div class="fs26">購置方联系电话：<span class="fw_b buyer_mobile"></span></div>
+          <div class="fs26">金额：<span class="fw_b pig_price"></span></div>
+          <!-- <div class="fs26">区块状态：<span class="fw_b"></span></div> -->
+          <!-- <div class="fs26">收益状态：<span class="fw_b ">等待收益</span></div> -->
+        </div>
+        <div class="hidden_no">
+        <div class="makeOverPay">
+          <p class="fs30 fw_b color_3">转让方收款账号</p>
+          <!-- <div class="payBox">
+            <img src="../assets/images/weixinpay.png" alt="">
+            <div>
+              <div class="fs26">账户名称：<span>大吉大利</span></div>
+              <div class="fs26">账户号：<span>12365478641254</span></div>
+              <div class="fs26">账户类型：<span>微信支付</span></div>  
+            </div>
+          </div>
+          <div class="payBox">
+              <img src="../assets/images/alipay.png" alt="">
+              <div>
+                <div class="fs26">账户名称：<span>今晚吃鸡</span></div>
+                <div class="fs26">账户号：<span>12365478641254</span></div>
+                <div class="fs26">账户类型：<span>支付宝支付</span></div>  
+              </div>
+            </div> -->
+        </div>
+        <div class="fromBox">
+            <div class="weui-cells weui-cells_form">
+ 
+            <div class="weui-cells__title  fs28 color_3 fw_b" style="padding-left:0">付款凭证</div>
+            <div class="weui-cells weui-cells_form">
+                <div class="weui-cell fileBox" style="padding-left: 0px">
+                  <div class="weui-cell__bd">
+                    <img src="" width="335px" style="height: 2.333333rem;" id="img" onclick="show()">
+                    <!-- <input id="uploaderInput" class="weui-uploader__input imgs" type="file" accept="image/*" /> -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="hide">
+            <div class="weui-cells__title  fs28 color_3 fw_b" style="padding-left:0">二级密码</div>
+            <div class="weui-cells weui-cells_form">
+              <div class="weui-cell">
+                <div class="weui-cell__bd">
+                  <input class="weui-input fs28 fw_b paypwd" type="password" placeholder="请输入二级密码"/>
+                </div>
+              </div>
+            </div>
+        
+
+        <input type="hidden" name="buyer_id" class="buyer_id" value="">
+        <input type="hidden" name="seller_id" class="seller_id" value="">
+        <input type="hidden" name="pig_id" class="pig_id" value="">
+        <div class="butBox"><div class="but">确认</div></div>
+          </div>
+          </div>
+</div>
+      </div>
+    </div>
+<style type="text/css">
+    .baocun{
+        margin: 0 auto;
+    }
+</style>
+<script src="../assets/js/lib/jquery-2.1.4.js"></script>
+<script src="../assets/js/jquery-weui.min.js"></script>
+<script src="../assets/js/lib/fastclick.js"></script>
+<script src="../assets/js/layer.js"></script>
+<script src="../assets/js/ajaxplugin.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+
+ var query = window.location.search.substring(1);
+    var id = query.substring(3);
+    var url = '/api/business/order_detail';
+    var type = 'post';
+    __ajax(url,{order_id:id},type,function(data){
+        console.log(data.data)
+        $('.establish_time').html(data.data.order_detail.establish_time);
+        $('.seller').html(data.data.order_detail.seller);
+        $('.buyer').html(data.data.order_detail.buyer);
+        $('.seller_mobile').html(data.data.order_detail.seller_mobile);
+        $('.buyer_mobile').html(data.data.order_detail.buyer_mobile);
+        // $('.accumulated_income').html(data.data.order_detail.accumulated_income);
+        $('.pig_currency').html(data.data.order_detail.pig_currency);
+        $('.doge_money').html(data.data.order_detail.doge_money);
+        $('.buyer_id').val(data.data.order_detail.buyer_id);
+        $('.seller_id').val(data.data.order_detail.seller_id);
+        $('.pig_id').val(data.data.order_detail.pig_id);
+        $('.pig_price').html(data.data.order_detail.pig_price);
+        if (data.data.order_detail.img_url) {
+          $('#img').attr('src',data.data.order_detail.img_url);
+        }
+
+        if (data.data.order_detail.pay_status == 2 || data.data.order_detail.pay_status == 0) {
+          $('.hide').hide();
+        }
+        if (data.data.order_detail.img_url == '') {
+          $('.hidden_no').hide();
+        }
+        //payment
+        var str = '';
+        $.each(data.data.payment_list, function(i, obj) {
+            str += '<div class="payBox">';
+            str += '<img src="../assets/images/'+obj.type+'.png" alt="">';
+            str += '<div>';
+            str += '<div class="fs26">账户名称：<span>'+obj.name+'</span></div>';
+            str += '<div class="fs26">账户号：<span>'+obj.account+'</span></div>';
+            str += '<div class="fs26">账户类型：<span>'+obj.pay_name+'</span></div>';
+            str += '</div>';
+            str += '</div>';
+            
+        });
+        $('.makeOverPay').append(str);
+    })
+
+
+    $('.but').click(function(){
+      var url        = '/api/business/confim_receipt'
+      var data       = {}
+      data.paypwd    = $('.paypwd').val();
+      data.order_id  = id;
+      data.buyer_id  = $('.buyer_id').val();
+      data.seller_id = $('.seller_id').val();
+      data.pig_id    = $('.pig_id').val();
+      data.imgs      = window.return_img;
+      // console.log(data);return;
+      var mehod = 'post';
+      __ajax(url,data,mehod,function(data){
+          if(data.status == 200){
+            layer.open({
+              content: data.message
+              ,skin: 'msg'
+              ,time: 1 //2秒后自动关闭
+            });
+            window.setTimeout(function(){
+              window.location.href = '/dist/pages/transfer_log.html'
+            },1000);
+          }else {
+              layer.open({
+              content: data.message
+              ,skin: 'msg'
+              ,time: 1 //2秒后自动关闭
+            });
+          }
+      });
+    })
+    function show(){
+      img_url = $('#img').attr('src') 
+      // console.log($('#img'));
+      layer.open({
+        content: '<img width="90%" height="90%" class="baocun" src="'+img_url+'"/>',
+      });
+    }
+</script>
+
+  </body>
+</html>

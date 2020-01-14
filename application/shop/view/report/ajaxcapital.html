@@ -1,0 +1,77 @@
+<div class="table-responsive hDivBox">
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <td style="width: 1px;" class="text-center">
+                <input type="checkbox" onclick="checkAllSign(this)">
+            </td>
+            <td class="text-center">
+                <a href="javascript:sort('user_id');">ID</a>
+            </td>
+            <td class="text-center">
+                <a href="javascript:sort('nickname');">会员昵称</a>
+            </td>
+            <td class="text-center">
+                <a href="javascript:sort('level');">会员等级</a>
+            </td>
+            <td class="text-center">
+                <a href="javascript:sort('mobile');">手机号码</a>
+            </td>
+            <td class="text-center">
+                历史总投资
+            </td>
+            <td class="text-center">
+                当前拥有总價值
+            </td>
+            <td class="text-center">
+                历史总收入
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name="userList" id="list"}
+        <tr class="tr" data-order-id="{$list.user_id}" id="{$list.user_id}">
+            <td class="text-center">
+                <input class="ico-check" type="checkbox" name="selected[]" value="{$list['user_id']}">
+                <input type="hidden" name="shipping_code[]" value="flat.flat">
+            </td>
+            <td class="text-center">{$list.user_id}</td>
+            <td class="text-center">{$list.nickname}</td>
+            <td class="text-center">{$level[$list['level']]}</td>
+            <td class="text-center">{$list.mobile}</td>
+            <td class="text-center">{$list.allprice}</td>
+            <td class="text-center">{$list.price}</td>
+            <td class="text-center">{$list.sell_price}</td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    <div class="pull-right">{$page}</div>
+</div>
+<script>
+    $(".pagination  a").click(function () {
+        var page = $(this).data('p');
+        ajax_get_table('search-form2', page);
+    });
+
+    function checkAllSign(obj) {
+        $(obj).toggleClass('Selected');
+        if ($(obj).hasClass('Selected')) {
+            $('.hDivBox > table>tbody .tr').addClass('trSelected');
+            $('input[type="checkbox"]').prop('checked','checked');
+        } else {
+            $('.hDivBox > table>tbody .tr').removeClass('trSelected');
+            $('input[type="checkbox"]').removeAttr('checked');
+        }
+    }
+
+    // 表格行点击选中切换
+    $(document).on('click','.hDivBox > table>tbody .tr',function(){
+        $(this).toggleClass('trSelected');
+        var checked = $(this).hasClass('trSelected');
+        $(this).find('input[type="checkbox"]').prop('checked',checked);
+    });
+
+</script>

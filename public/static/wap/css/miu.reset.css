@@ -1,0 +1,39 @@
+
+body{  background-color: #efeff4;line-height: normal;font-size: initial;}
+.mui-scroll-wrapper{
+	overflow: inherit;
+}
+.mui-table-view:after{display:none;}
+.mui-scroll {
+	position: static;
+}
+.mui-table-view:before{background-color:transparent;}
+
+
+
+/*屏蔽导航条样式*/
+
+.main2-top,
+.main15-top{display:none;}
+
+
+ input[type=text]{
+    line-height: 21px;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    -webkit-user-select: text;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 3px;
+    outline: 0;
+    background-color: #fff;
+    -webkit-appearance: none;
+}
+
+.mui-btn-blue, .mui-btn-primary, input[type=submit] {
+   color: #fff;
+   border: 1px solid  rgb(1,150,224);
+   background-color: rgb(1,150,224);
+}
+

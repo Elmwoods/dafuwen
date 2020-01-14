@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{:config('WEB_SITE_TITLE')}</title>
+    <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__CSS__/animate.min.css" rel="stylesheet">
+    <link href="__CSS__/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__CSS__/plugins/chosen/chosen.css" rel="stylesheet">
+    <link href="__CSS__/plugins/switchery/switchery.css" rel="stylesheet">
+    <link href="__CSS__/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="__CSS__/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="__CSS__/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+
+
+    <!-- 自定义公用css -->
+    <link href="__CSS__/public.css?v=<?=date('Y-m-d');?>" rel="stylesheet">
+
+    <script src="__JS__/jquery.min.js?v=2.1.4"></script>
+    <script src="__JS__/public.js?v=<?=date('Y-m-d');?>"></script>
+    <script src="__JS__/plugins/uploadify/jquery.uploadify.min.js"></script>
+    <script src="__JS__/plugins/zclip/ZeroClipboard.min.js"></script>
+    <script src="__JS__/dialog.js"></script>
+    <script src="__JS__/jquery.dragsort-0.5.2.min.js"></script> 
+    <script src="__JS__/masonry.pkgd.min.js"></script> 
+	<script src="__STATIC__/js/jquery.validate.js"></script> 
+	
+	<!--时间控件-->
+	<link rel="stylesheet" type="text/css" media="all" href="__CSS__/plugins/datapicker/datepicker3.css" />
+	<script type="text/javascript" src="__JS__/plugins/datapicker/bootstrap-datepicker.js"></script>
+    
+    <link rel="stylesheet" type="text/css" media="all" href="__JS__/plugins/datetimepicker/bootstrap-datetimepicker.min.css" />
+    <script type="text/javascript" src="__JS__/plugins/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+
+
+    <style type="text/css">
+    .long-tr th{
+        text-align: center
+    }
+    .long-td td{
+        text-align: center
+    }
+    </style>
+
+    <script type="text/javascript">
+        var  SITE_URL = "__SITE_URL__";
+        var  IMG_PATH = "__IMG__";
+        var  JS_PATH = "__JS__";
+        var  STATIC = "__STATIC__";
+        var  ROOT = "__ROOT__";
+        var  UPLOAD_PICTURE = "{:url('home/File/uploadPicture',array('session_id'=>get_session_id()))}";
+        var  UPLOAD_FILE = "{:url('home/File/upload',array('session_id'=>get_session_id()))}";
+        var  UPLOAD_DIALOG_URL = "{:url('home/File/uploadDialog',array('session_id'=>get_session_id()))}";
+
+    </script>
+
+    <div id="top-alert" class="top-alert-tips alert-error" style="display: none;">
+  <a class="close" href="javascript:;"><b class="fa fa-times-circle"></b></a>
+  <div class="alert-content"></div>
+</div>
+</head>

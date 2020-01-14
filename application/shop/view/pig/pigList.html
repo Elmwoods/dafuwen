@@ -1,0 +1,157 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+	<section class="content">
+       <div class="row">
+       		<div class="col-xs-12">
+	       		<div class="box">
+	           	<div class="box-header">
+	               <nav class="navbar navbar-default">	     
+				        <div class="collapse navbar-collapse">
+				            <div class="navbar-form row">
+
+								<a href="{:U('Pig/pigadd')}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i>新增地皮</a>
+				            </div>
+							<!-- <div class="navbar-form row">
+								<a href="{:U('Pig/resetGame')}" class="btn btn-primary pull-right" title="不能频繁重启，若有需要才进行重启"><i class="fa fa-plus"></i>重启服务</a>
+
+							</div> -->
+				      	</div>
+	    			</nav>              
+	             </div>	    
+	             <!-- /.box-header -->
+	             <div class="box-body">	             
+	           		<div class="row">
+	            	<div class="col-sm-12">
+		              <table id="list-table" class="table table-bordered table-hover" role="grid" aria-describedby="example1_info">
+		                 <thead>
+		                   <tr role="row">
+			                   <th class="sorting" tabindex="0">级别ID</th>
+			                   <th class="sorting" tabindex="0">名称</th>
+			                   <th class="sorting" tabindex="0">最小金额(元)</th>
+			                   <th class="sorting" tabindex="0">最大金额(元)</th>
+			                   <th class="sorting" tabindex="0">購置开始时间</th>
+			                   <th class="sorting" tabindex="0">購置结束时间</th>
+			                   <th class="sorting" tabindex="0">預約微分数量(个)</th>
+			                   <th class="sorting" tabindex="0">購置微分数量(个)</th>
+			                   <th class="sorting" tabindex="0">合約收益天数</th>
+			                   <th class="sorting" tabindex="0">合約收益比例/天</th>
+			                   <th class="sorting" tabindex="0">可挖HKT(枚)</th>
+			                   <!--<th class="sorting" tabindex="0">可挖DOGE(%)</th>-->
+			                   <th class="sorting" tabindex="0">是否上架</th>
+			                   <th class="sorting" tabindex="0">图片</th>
+			                   <th class="sorting" tabindex="0">操作</th>
+		                   </tr>
+		                 </thead>
+						<tbody>
+						  {foreach name="list" item="vo" key="k" }
+						  	<tr role="row" align="center">
+		                     <td>{$vo.id}</td>
+		                     <td>{$vo.goods_name}</td>
+		                     <td>{$vo.small_price}</td>
+		                     <td>{$vo.large_price}</td>
+		                     <td>{$vo.start_time}</td>
+		                     <td>{$vo.end_time}</td>
+		                     <td>{$vo.reservation}</td>
+		                     <td>{$vo.adoptive_energy}</td>
+		                     <td>{$vo.contract_days}</td>
+		                     <td>{$vo.income_ratio}%</td>
+		                     <td>{$vo.pig_currency}</td>
+		                     <!--<td>{$vo.doge_money}</td>-->
+		                     
+		                     <td><img width="20" height="20" src="__SHOP_URL__/images/{if $vo['is_display'] ==1}yes.png{else /}cancel.png{/if}" onclick="changeTableVal('pig_goods','id','{$vo.id}','is_display',this)"/></td>
+		                     <td><img src="/uploads/images/{$vo.images}" style="height: 30px" onerror="this.src='/static/admin/images/no_img.jpg'"/></td>
+		                     <td>
+		                      <a class="btn btn-primary" href="{:U('Pig/pigadd',array('act'=>'edit','id'=>$vo['id']))}"><i class="fa fa-pencil">编辑</i></a>
+		                     {if $vo.is_restart == 2}<a class="btn btn-primary" href="javascript:void(0)" onclick="restart({$vo.id})"><i class="fa fa-pencil">重启</i></a>{/if}
+								 {if $vo.reset_open_game == 1 }<a class="btn btn-primary" href="javascript:void(0)" onclick="restopengame({$vo.id})"><i class="fa fa-pencil">补偿开奖</i></a>{/if}
+		                      <!-- <a class="btn btn-danger" href="javascript:void(0)" data-url="{:U('Pig/pigHandle')}" data-id="{$vo.id}" onclick="delfun(this)"><i class="fa fa-trash-o"></i></a> -->
+							</td>
+		                   </tr>
+		                  {/foreach}
+		                   </tbody>
+		                 <tfoot>
+		                 
+		                 </tfoot>
+		               </table>
+	               </div>
+	          </div>
+              <div class="row">
+              	    <div class="col-sm-6 text-left"></div>
+                    <div class="col-sm-6 text-right">{$page}</div>		
+              </div>
+	          </div><!-- /.box-body -->
+	        </div><!-- /.box -->
+       	</div>
+       </div>
+   </section>
+</div>
+<script>
+function delfun(obj){
+	if(confirm('确认删除')){
+
+		$.ajax({
+			type : 'post',
+			url : $(obj).attr('data-url'),
+			data : {act:'del',id:$(obj).attr('data-id')},
+			dataType : 'json',
+			success : function(data){
+				if(data){
+					$(obj).parent().parent().remove();
+				}else{
+					layer.alert('删除失败', {icon: 2});  //alert('删除失败');
+				}
+			}
+		})
+	}
+	return false;
+}
+function restart(id){
+	var goods_id = id;
+
+	console.log(goods_id);
+
+	if(confirm('确认重启吗？')){
+
+		$.ajax({
+			type : 'post',
+			url : "{:U('Pig/restart')}",
+			data : {goods_id:goods_id},
+			dataType : 'json',
+			success : function(data){
+				alert(1);
+				if(data.status == 1){
+					layer.alert(data.message, {icon: 1});
+                    return false;
+				}else if(data.status == -1){
+					layer.alert(data.message, {icon: 2});
+                    return false;
+				}
+				// if(data){
+				// 	$(obj).parent().parent().remove();
+				// }else{
+				// 	layer.alert('删除失败', {icon: 2});  //alert('删除失败');
+				// }
+			}
+		})
+
+	}else{
+
+		return false;
+	}
+}
+
+function restopengame(id){
+	var goods_id = id;
+
+	console.log(goods_id);
+
+	if(confirm('确认重启吗？')){
+		window.open('/shop/Pig/OpenGamecompenState/id/'+id);
+	}else{
+
+		return false;
+	}
+}
+</script>  
+</body>
+</html>

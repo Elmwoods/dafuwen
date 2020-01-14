@@ -1,0 +1,86 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 优惠券列表</h3>
+                </div>
+                <div class="ibox-content">
+	                
+                    <div id="ajax_return">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <td style="width: 1px;" class="text-center"><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);"></td>
+                                    <td class="text-center">
+                                        优惠券名称
+                                    </td>
+                                    <td class="text-center">
+                                        发放类型
+                                    </td>
+                                    <td class="text-center">
+                                        订单号
+                                    </td>
+                                    <td class="text-center">
+                                        使用会员
+                                    </td>
+                                    <td class="text-center">
+                                        使用时间
+                                    </td>
+                                    <if condition="($type eq 4)">
+                                        <td class="text-center">
+                                            优惠券码
+                                        </td>
+                                    </if>
+                                    <td class="text-center">
+                                        操作
+                                    </td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {volist name="lists" id="list"}
+                                    <tr>
+                                        <td class="text-center">
+                                            <input type="checkbox" name="selected[]" value="6">
+                                        </td>
+                                        <td class="text-center">{$list.name}</td>
+                                        <td class="text-center">{$coupon_type[$list['type']]|default=''}</td>
+                                        <td class="text-center">{$list.order_sn}</td>
+                                        <td class="text-center">{$list.nickname}</td>
+                                        <td class="text-center">
+                                            <if condition="$list[use_time] gt 0">
+                                                {$list.use_time|date='Y-m-d H:i',###}
+                                                <else/>
+                                                N
+                                            </if>
+                                        </td>
+                                        <if condition="($list[type] eq 4) and ($list[code] neq '')">
+                                            <td class="text-center">
+                                                {$list.code}
+                                            </td>
+                                        </if>
+                                        <td class="text-center">
+                                        <a href="{:U('Coupon/coupon_list_del',array('id'=>$list['id']))}" id="button-delete6" data-toggle="tooltip" title="" class="btn btn-danger" data-original-title="删除"><i class="fa fa-trash-o"></i></a></td>
+                                    </tr>
+                                {/volist}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                      <div class="row">
+                            <div class="col-sm-6 text-left"></div>
+                            <div class="col-sm-6 text-right">{$page}</div>		
+                      </div>
+
+                </div>
+            </div>
+        </div>        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+</body>
+</html>

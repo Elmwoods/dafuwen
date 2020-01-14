@@ -1,0 +1,6 @@
+{
+    "require": {
+        "workerman/gateway-worker": "^3.0",
+        "workerman/workerman-for-win": "^3.5"
+    }
+}

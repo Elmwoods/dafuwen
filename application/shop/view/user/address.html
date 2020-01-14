@@ -1,0 +1,78 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="navbar navbar-default">
+                <div class="navbar-form">
+                    <div class="pull-right">
+                        <a data-original-title="返回" class="btn btn-default" title="" data-toggle="tooltip" href="javascript:history.go(-1)"><i class="fa fa-reply"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 收货地址列表</h3>
+                </div>
+
+
+                <div class="ibox-content">
+
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+
+                                <td class="text-left">
+                                    收货人
+                                </td>
+
+
+                                <td class="text-left">
+                                    联系方式
+                                </td>
+
+                                <td class="text-left">
+                                    邮政编码
+                                </td>
+
+                                <td class="text-left">
+                                地址
+                                 </td>
+
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="lists" id="list"}
+                                <tr>
+                                    <td class="text-left">{$list.consignee}</td>
+
+                                    <td class="text-left">{$list.mobile}</td>
+                                    <td class="text-left">
+                                        {$list.zipcode}
+                                    </td>
+                                    <td class="text-left">
+                                        {$regionList[$list['province']]},{$regionList[$list['city']]},{$regionList[$list['district']]},{$list.address}
+                                    </td>
+
+                                </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+</body>
+</html>

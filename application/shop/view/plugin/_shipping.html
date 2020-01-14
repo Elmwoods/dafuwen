@@ -1,0 +1,109 @@
+{include file="public/header" /}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <section class="content">
+        <!-- Main content -->
+        <div class="container-fluid">
+            <div class="pull-right">
+                <a href="javascript:history.go(-1)" data-toggle="tooltip" title="" class="btn btn-default" data-original-title="返回"><i class="fa fa-reply"></i></a>
+            </div>
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3 class="panel-title"><i class="fa fa-list"></i> 添加物流</h3>
+                </div>
+                <div class="ibox-content">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_tongyong" data-toggle="tab">添加物流</a></li>
+                    </ul>
+                    <!--表单数据-->
+                    <form method="post" id="addEditshipping" enctype="multipart/form-data" >                    
+                        <!--通用信息-->
+                    <div class="tab-content">                 	  
+                        <div class="tab-pane active" id="tab_tongyong">
+                           
+                            <table class="table table-bordered">
+                                <tbody>                                                     
+                                <tr>
+                                    <td>物流编码:</td>
+                                    <td>
+                                        <input type="text" value="{$shipping.code|default=''}" id="code" name="code" class="form-control" style="width:250px;display:inherit"/> 
+                                        <p class="notic">一般为物流公司拼音组成,不得含有英文以外的字符。<a href="http://www.ickd.cn/api/list.html" target="_blank" class="ncap-btn"><i class="fa fa-truck"></i>参考查询编码</a></p>                                      
+                                    </td>
+                                </tr> 
+   
+                                <tr>
+                                    <td>物流公司名字:</td>
+                                    <td>
+                                        <input type="text" value="{$shipping.name|default=''}" id="name" name="name" class="form-control" style="width:250px; display:inherit"/>
+                                        <span id="err_name" style="color:#F00; display:none;">名称不得为空</span>
+                                    </td>
+                                </tr> 
+                                <tr>
+                                    <td>简短描述:</td>
+                                    <td>
+                                        <input type="text" value="{$shipping.desc|default=''}" id="desc"  name="desc" class="form-control" style="width:250px;"/>
+                                    </td>
+                                </tr>    
+                                <tr>
+                                    <td>
+                                    物流图片图标:
+                                    <font color="#FF0000">必传</font>
+                                    </td>
+                                    <td>
+                                        <div class="controls uploadrow2" data-max="1" title="点击修改图片" rel="p_cover">
+                                                <input type="hidden" id="cover_id_p_cover" name="shipping_img" value="{$shipping.shipping_img|default=''}"  data-callback="uploadImgCallback">
+                                                <div class="upload-img-box" rel="img"  >
+                                                  <div class="upload-pre-item2">
+                                                        <img width="100" height="100" src="{$shipping.shipping_img|default=''}"/>
+                                                    <em class="edit_img_icon">&nbsp;</em>
+                                                </div>
+                                          </div>
+
+                                    </td>
+                                </tr>
+                                </tbody>
+                                </table>
+                        </div>                           
+                    </div>              
+                    <div class="pull-right">
+                        <input type="hidden" name="id" value="{$shipping.id|default=''}">
+                        <button class="btn btn-primary" title="" data-toggle="tooltip" type="button" onclick="checkSubmit()" data-original-title="保存">保存</button>
+                    </div>
+			    </form><!--表单数据-->
+                </div>
+            </div>
+        </div>    <!-- /.content -->
+    </section>
+</div>
+<script>
+// 判断输入框是否为空
+$(function(){
+    
+    //初始化上传图片插件
+    initUploadImg();
+});
+
+function uploadImgCallback(name,id,src){
+    $('.editing img').attr('src',src);
+    $('#cover_id_p_cover').val(src);
+    //$('.editing input[name="cover_id"]').val(id);
+}
+$("input[type='text']").focus(function(){
+	  $('span[id^="err_"]').hide();
+});
+
+function checkSubmit(){
+	var code = $.trim($("#code").val());
+	var name = $.trim($("#name").val());
+
+    (code.length == 0) && $('#err_code').show();
+    (name.length == 0) && $('#err_name').show();
+		
+	if($('span[id^="err_"]:visible').length > 0)
+		 return false;
+    $('#addEditshipping').submit();		 
+}
+ 
+</script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+                    <div>数量：{if $count}{$count}{else}0{/if}</div>
+                    <form method="post" enctype="multipart/form-data" target="_blank" id="form-order">
+                        <div class="table-responsive hDivBox">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <td style="width: 1px;" class="text-center">
+                                        <input class="ico-check" type="checkbox" onclick="checkAllSign(this)">
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="javascript:sort('order_sn');">订单编号</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="javascript:sort('consignee');">出售人手机号</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="javascript:sort('consignee');">购买人手机号</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="">地皮的等级</a>
+                                    </td>      
+                                    <td class="text-center">
+                                        <a href="">地皮的价格</a>
+                                    </td>
+									<td class="text-center">
+                                        <a href="">地皮的ID</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="javascript:sort('order_status');">交易状态</a>
+                                    </td>
+                                    <td class="text-center">
+                                        交易凭证
+                                    </td>                           
+                                    <td class="text-center">
+                                        <a href="javascript:sort('add_time');">订单下单时间</a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="javascript:sort('add_time');">订单结束时间</a>
+                                    </td>
+                                    <!-- <td class="text-center">操作</td> -->
+                                </tr>
+                                </thead>
+                                <tbody>
+                                 {volist name="orderList" id="list"}
+                                    <tr class="tr" data-order-id="{$list.order_id}" id="{$list.order_id}">
+                                        <td class="text-center">
+                                            <input class="ico-check" type="checkbox" name="selected[]" value="{$list['user_id']}">
+                                            <input type="hidden" name="shipping_code[]" value="flat.flat">
+                                        </td>
+                                        <td class="text-center">{$list.pig_order_sn}</td>
+                                        <td class="text-center">{$list.user_name}</td>
+                                        <td class="text-center">{$list.first_name}</td>
+                                        <td class="text-center">{$list.pig_level}</td>
+                                        <td class="text-center">{$list.pig_price}</td>
+                                        <td class="text-center">{$list.pig_id}</td>
+                                        <td class="text-center">{if $list.pay_status==0}冻结{elseif $list.pay_status == 1}<span style="color: blue">交易中</span>{elseif $list.pay_status == 2}<span style="color: red">交易完成</span>{/if}</td>
+                                        <td class="text-center"><a href="{$list.img_url}"><img src="{$list.img_url}" style="height: 30px" onerror="this.src='/static/admin/images/no_img.jpg'"/></a></td>
+                                        <td class="text-center">{if $list.establish_time}{$list.establish_time|date='Y-m-d H:i',###}{else}{/if}</td>
+                                        <td class="text-center">{if $list.end_time}{$list.end_time|date='Y-m-d H:i',###}{else}{/if}</td>
+                                        <!-- <td class="text-center">
+                                           <a href="javascript:;" onclick="order_pig({$list['order_id']})" data-toggle="tooltip" title="" class="btn btn-info" data-original-title="查看详情"><i class="fa fa-pencil"></i></a> 
+                                        </td> -->
+                                    </tr>
+                                {/volist}
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-sm-6 text-left"></div>
+                        <div class="col-sm-6 text-right">{$page}</div>
+                    </div>
+<script>
+    $(".pagination  a").click(function(){
+        var page = $(this).data('p');
+        ajax_get_table('search-form2',page);
+    });
+
+    function checkAllSign(obj) {
+        $(obj).toggleClass('Selected');
+        if ($(obj).hasClass('Selected')) {
+            $('.hDivBox > table>tbody .tr').addClass('trSelected');
+            $('input[type="checkbox"]').prop('checked','checked');
+        } else {
+            $('.hDivBox > table>tbody .tr').removeClass('trSelected');
+            $('input[type="checkbox"]').removeAttr('checked');
+        }
+    }
+
+    // 表格行点击选中切换
+    $(document).on('click','.hDivBox > table>tbody .tr',function(){
+        $(this).toggleClass('trSelected');
+        var checked = $(this).hasClass('trSelected');
+        $(this).find('input[type="checkbox"]').prop('checked',checked);
+    });
+</script>

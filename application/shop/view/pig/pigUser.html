@@ -1,0 +1,184 @@
+{include file="public/header"/}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3 class="panel-title"><i class="fa fa-list"></i>会员的地皮</h3>
+                </div>
+                <div class="ibox-content">
+                    <div class="navbar navbar-default">
+                            <form action="{:U('shop/Pig/piginuser')}" id="search-form2" class="navbar-form form-inline" method="post">
+
+                               <!--  <div class="form-group">
+                                    <label class="control-label" for="input-order-id">订单编号</label>
+                                    <div class="input-group">
+                                        <input type="text" name="pig_order_sn" placeholder="订单编号" id="input-order-id" class="input-sm" style="width:100px;">
+                                    </div>
+                                </div> -->
+                                <div class="form-group">
+                                    <label class="control-label" for="input-order-id">地皮的所属人手机号</label>
+                                    <div class="input-group">
+                                        <input type="text" name="mobile" placeholder="地皮的所属人手机号" id="input-member-id" class="input-sm" style="width:180px;">
+                                    </div>
+                                </div>
+                               <div class="form-group">
+                                    <label class="control-label" for="input-order-id">所属人id</label>
+                                    <div class="input-group">
+                                        <input type="text" name="id" placeholder="所属人id" id="input-member-id" class="input-sm" style="width:180px;">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                   <select name="pig_level" class="input-sm" style="width:200px;">
+                                            <option value="">请选择地皮等级</option>
+                                            {foreach name="pig" item="v" key="k"}
+                                            <option value="{$v['id']}">{$v['goods_name']}</option>
+                                            {/foreach}
+                                    </select>
+                                </div>
+                                <!-- <div class="form-group">
+                                <div class="input-group margin">
+                                    <div class="input-group-addon">
+                                        选择成熟时间  <i class="fa fa-calendar"></i>
+                                    </div>
+                                   <input type="text" class="form-control pull-right" name="end_time" value="" id="start_time">
+                                </div>
+                                </div> -->
+                                <div class="form-group">
+                                   <select name="is_able_sale" class="input-sm" style="width:200px;">
+                                            <option value="">请选择状态</option>
+                                            <option value="0">升值中</option>
+                                            <option value="1">成熟</option>
+                                    </select>
+                                </div>
+
+                                
+                                       
+                                <div class="form-group">
+                                    <input type="hidden" name="order_by" value="order_id">
+                                    <input type="hidden" name="sort" value="desc">
+                                    <input type="hidden" name="user_id" value="{$Request.param.user_id}">
+                                </div>
+                                <div class="form-group">
+                                    <a href="javascript:void(0)" onclick="ajax_get_table('search-form2',1)" id="button-filter search-order" class="btn btn-primary"><i class="fa fa-search"></i> 筛选</a>
+                                </div>
+                                <div class="form-group">
+                                    <a href="{:url('Pig/pig_user_add')}" class="btn btn-primary">生成宠物</a>
+                                </div>                                
+                                <!-- <button type="submit" class="btn btn-default pull-right"><i class="fa fa-file-excel-o"></i>&nbsp;导出excel</button>                                -->
+                            </form>
+                    </div>
+                    <div id="ajax_return">
+
+                    </div>
+                </div>
+            </div>
+        </div>        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<script>
+    $(document).ready(function(){
+        ajax_get_table('search-form2',1);
+
+
+    });
+
+    // ajax 抓取页面
+    function ajax_get_table(tab,page){
+        cur_page = page; //当前页面 保存为全局变量
+            $.ajax({
+                type : "POST",
+                url:"/shop/pig/piginuser/p/"+page,//+tab,
+                data : $('#'+tab).serialize(),// 你的formid
+                success: function(data){
+                    $("#ajax_return").html('');
+                    $("#ajax_return").append(data);
+                }
+            });
+    }
+
+
+    /**
+     * 更改上级用户
+     * @param id 需要更改的用户id
+     */
+    function change_pig(id){
+
+        var url = "{:Url('Pig/change_pig')}"+"?id="+id;
+        layer.open({
+            type: 2,
+            title: '填写指定ID',
+            shadeClose: true,
+            shade: 0.2,
+            area: ['40%', '40%'],
+            content: url,
+        });
+
+        
+    }
+
+        //删除用户
+  function pigDel(id){
+   if(confirm("确定要删除id为"+id+"的猪吗？请谨慎操作"))
+      {
+             $.ajax({
+                type : "POST",
+                url:"/shop/pig/pigDel",
+                data : {id:id},// 你的formid
+                success: function(data){
+                    if(data.code==1){
+                         alert('删除成功!');
+                         window.location.reload(); 
+                    }else{
+                        alert('删除失败!');
+                    }
+                }
+            });
+     }
+     
+   // lunhui.confirm(id,'{:url("pigDel")}');
+
+ }
+
+$(document).ready(function() {
+    $('#start_time').daterangepicker({
+        format:"YYYY-MM-DD",
+        singleDatePicker: false,
+        showDropdowns: true,
+        minDate:'2019-01-01',
+        maxDate:'2030-01-01',
+        startDate:'2019-01-01',
+        showWeekNumbers: true,
+        timePicker: false,
+        timePickerIncrement: 1,
+        timePicker12Hour: true,
+        ranges: {
+           '今天': [moment(), moment()],
+           '昨天': [moment().subtract('days', 1), moment().subtract('days', 1)],
+           '最近7天': [moment().subtract('days', 6), moment()],
+           '最近30天': [moment().subtract('days', 29), moment()],
+           '上一个月': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
+        },
+        opens: 'right',
+        buttonClasses: ['btn btn-default'],
+        applyClass: 'btn-small btn-primary',
+        cancelClass: 'btn-small',
+        locale : {
+            applyLabel : '确定',
+            cancelLabel : '取消',
+            fromLabel : '起始时间',
+            toLabel : '结束时间',
+            customRangeLabel : '自定义',
+            daysOfWeek : [ '日', '一', '二', '三', '四', '五', '六' ],
+            monthNames : [ '一月', '二月', '三月', '四月', '五月', '六月','七月', '八月', '九月', '十月', '十一月', '十二月' ],
+            firstDay : 1
+        }
+    });
+});
+
+</script>
+</body>
+</html> 

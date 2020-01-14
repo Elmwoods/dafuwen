@@ -1,0 +1,126 @@
+{include file="public/header"/}
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>注册用户查询</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->
+            <div class="row">
+                <div class="col-sm-13">
+                    <form name="admin_list_sea" class="form-search" method="get" action="{:url('user_list')}">
+
+                        <div class="col-sm-4" id="data_5">
+                            <div class="input-daterange input-group" id="datepicker">
+                                <input type="text" class="input-mini form-control" placeholder="开始时间" name="start" id="start" value="{$Request.param.start}"/>
+                                <span class="input-group-addon">~</span>
+                                <input type="text" class="input-mini form-control" placeholder="结束时间" name="end" id="end" value="{$Request.param.end}" />
+                            </div>
+                        </div>
+
+                        <div class="col-sm-2">
+                            <div class="col-sm-12 input-group">
+                                <input type="text" class="input-mini form-control" placeholder="用户名" name="display_name" value="{$Request.param.display_name}"/>
+                            </div>
+                        </div>
+						
+
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
+                                </span>
+
+                               
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+            <!--搜索框结束-->
+            <div class="hr-line-dashed"></div>
+
+            <div class="example-wrap">
+                <div class="example">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr class="long-tr">
+                            <th width="2%"><input class="i-checks checkbox check-all" type="checkbox"></th>
+                            <th width="3%">uid</th>
+                            <th width="6%">用户头像</th>
+                            <th width="5%">用户名</th>
+                            <th width="5%">unionid</th>
+                            <th width="5%">openid</th>
+							<th width="5%">类型</th>
+                            <th width="5%">注册时间</th>
+                        </tr>
+                        </thead>
+                        <tbody id="list-content">
+                            {volist name="lists" id="vo"}
+                            <tr class="long-td">
+                                <td><input class="ids i-checks" type="checkbox" name="ids[]" value="{$vo.id}"></td>
+                                <td>{$vo.id}</td>
+                                <td><img alt="image" class="img-circle" width="70px" height="70px" src="{$vo.avatar ? $vo.avatar :'/static/admin/images/head_default.gif'}" /></td>
+
+                                <td>{$vo.display_name}</td>
+                                <td>{$vo.unionid}</td>
+                                <td>{$vo.openid}</td>
+								<td>{$vo.user_type==1?'普通':'微信'}用户</td>
+                                <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
+                               
+                            </tr>
+                            {/volist}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 分页 -->
+                            <div id="Pages">  {$page} </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Panel Other -->
+</div>
+
+{include file="public/footer" /}
+
+
+<script type="text/javascript">
+    
+    $('#data_5 .input-daterange').datepicker({
+        keyboardNavigation: false,
+        forceParse: false,
+        autoclose: true
+    });
+    //获取的物品
+    $('.user_goods').click(function(){
+        var id = $(this).data('uid');
+        $.WeiOms.openSelectLists("{:url('wx_user/user_goods')}?uid="+id,1,'获取的物品',function(){
+
+        });
+    })
+
+    //扩展信息
+    $('.user_info').click(function(){
+        var id = $(this).data('uid');
+        $.WeiOms.openSelectLists("{:url('wx_user/user_info')}?uid="+id,1,'信息扩展',
+            function(){
+
+        });
+    })
+    //详细信息
+    $('.user_detail').click(function(){
+        var id = $(this).data('uid');
+        $.WeiOms.openSelectLists("{:url('wx_user/user_detail')}?uid="+id,1,'详细信息',
+            function(){
+
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{include file="public/header" /}
+
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>公众号设置</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">           
+                    <div class="panel-body">      
+                        <div class="row search-form">
+                            <div class="col-sm-12">   
+                        
+                   
+                                <div class="fl">
+                                    <div class="tools">
+                                        <a class="btn btn-primary" href="{:url('step_0')}">新 增</a>                              
+                                        <!-- <a class="btn btn-danger " href="Material/syc_news_to_wechat">删除</a> -->
+                                    </div>        
+
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="example-wrap">
+                <div class="example">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                           <tr>
+                            <th width="8%">公众号ID</th>
+                            <th  width="32%">公众号名称</th>
+                            <th  width="15%">Token</th>
+                            <th  width="35%">操作</th>
+                          </tr>
+                        </thead>
+                        {if !empty($list_data[1])}
+                           {volist name="list_data[1]" id="vo"}
+                            <tr>
+                                <td>{$vo.id}</td>
+                                <td>{$vo.public_name}</td>
+                                <td>{$vo.token}</td>
+                                <td>
+                                <a href="{:url('step_0',['id'=>$vo['id']])}" class="btn btn-primary btn-xs"><i class="fa fa-paste"></i>编辑</a>&nbsp;
+                                <a href="javascript:;" onclick="do_del('{$vo.id}','{$vo.public_name}')" class="btn btn-danger btn-xs">
+                                <i class="fa fa-trash-o"></i>取消绑定</a> 
+                                 
+
+                                </td>
+                              </tr>
+                           {/volist}                                            
+                        {/if}
+                    </table>
+
+                </div>
+            </div>
+
+                </div>
+				</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/footer" /}
+
+<script type="text/javascript">
+//
+function do_del(id,name){
+    var msg='您确定要 取消绑定 以下公众号吗？  '+name;
+    if(confirm(msg)){
+        var url="{:url('del')}";
+//      alert(url);
+        $.post(url,{'id':id},function(){
+            location.reload();
+        });
+    }
+}
+</script>
+</body>
+</html>

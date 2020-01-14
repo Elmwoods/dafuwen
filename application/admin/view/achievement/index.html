@@ -1,0 +1,85 @@
+{include file="public/header" /}
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>业绩列表</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->           
+            <div class="row">
+                <div class="col-sm-12">                                             
+                    <form name="admin_list_sea" class="form-search" method="post" action="{:url('index')}">
+
+                        <div class="col-sm-2">
+                            <div class="col-sm-12 input-group">
+                                <input type="text" class="form-control" placeholder="请选择日期" id="test3" name="change_time" value="{if condition='$change_time eq null '}{else/}{$change_time}{/if}">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="user_id" value="{$user_id}" placeholder="请输入用户ID" />
+                                <span class="input-group-btn"> 
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> 搜索</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="input-group" >
+                        <a href="{:url('achievement/export_achievement',['user_id'=>$user_id,'change_time'=>$change_time])}"><button class="btn btn-primary" type="button">导出</button></a> 
+                        <!-- <a href="javascript:;" onclick="export({$user_id},{$change_time})" class="btn btn-danger btn-xs"> 导出</a>    -->
+                        </div>
+                        </div>
+                    </form>                         
+                </div>
+
+                
+            <!--搜索框结束-->
+            <div class="hr-line-dashed"></div>
+
+            <div class="example-wrap">
+                <div class="example">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="long-tr">
+                                <th>用户ID</th>
+                                <th>用户名称</th>
+                                <th width="15%">用户返佣金额</th>
+                                <th width="15%">父母孝爱基金</th>
+                                <th width="15%">时间</th>
+                            </tr>
+                        </thead>
+                        <tbody id="article_list">
+                            {foreach name="list" item="vo"}
+                                <tr class="long-td">
+                                    <td>{$vo.user_id}</td>
+                                    <td>{$vo.nickname}</td>
+                                    <td>{$vo.user_money}</td>
+                                    <td>{$vo.pay_points}</td>
+                                    <td><?php if($vo['change_time']!=null){ echo (date('Y-m',strtotime("last day of -1 month ",$vo['change_time'])));} ?></td>
+                                </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Panel Other -->
+</div>
+{include file="public/footer" /}
+
+<script src="__STATIC__/admin/laydate/laydate.js"></script>
+<script type="text/javascript">
+//年月选择器
+laydate.render({
+  elem: '#test3'
+  ,type: 'month'
+});
+
+
+</script>
+</body>
+</html>
