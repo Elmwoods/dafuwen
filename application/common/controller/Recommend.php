@@ -570,4 +570,52 @@ class Recommend{
          }
     }
 
+    /**
+     * 土地分裂
+     */
+    public static function division()
+    {
+        $sql = 'SELECT p.*,g.large_price FROM zp_user_exclusive_pig as p LEFT JOIN zp_pig_goods as g  on p.pig_id = g.id where p.price >= g.large_price and pig_lock = 0';
+        $res = Db::query($sql);
+        foreach ($res as $k => $v) {
+            try {
+                $division_price = round(bcdiv($v['price'], 2, 4), 2);
+
+                $up = db('user_exclusive_pig')->where('id', $v['id'])->update(['price' => $division_price]);
+                if (!$up) {
+                    $division_record[] = [
+                        'division_id'    => $v['id'],
+                        'user_id'        => $v['user_id'],
+                        'division_price' => $v['price'],
+                        'status'         => 2,
+                        'created_at'     => time()
+                    ];
+                    continue;
+                } else {
+                    $division_record[] = [
+                        'division_id'    => $v['id'],
+                        'user_id'        => $v['user_id'],
+                        'division_price' => $v['price'],
+                        'status'         => 1,
+                        'created_at'     => time()
+                    ];
+                }
+
+                unset($v['id'], $v['large_price']);
+                $v['price'] = $division_price;
+                $ins[]      = $v;
+            } catch (\Exception $e) {
+                $division_record[] = [
+                    'id'         => $v['id'],
+                    'user_id'    => $v['user_id'],
+                    'price'      => $v['price'],
+                    'status'     => 2,
+                    'created_at' => time()
+                ];
+                continue;
+            }
+        }
+        db('user_exclusive_pig')->insertAll($ins);
+        db('division_record')->insertAll($division_record);
+    }
 }
