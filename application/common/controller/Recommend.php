@@ -577,6 +577,10 @@ class Recommend{
     {
         $sql = 'SELECT p.*,g.large_price FROM zp_user_exclusive_pig as p LEFT JOIN zp_pig_goods as g  on p.pig_id = g.id where p.price >= g.large_price and pig_lock = 0';
         $res = Db::query($sql);
+        if (!$res){
+            return false;
+        }
+
         foreach ($res as $k => $v) {
             try {
                 $division_price = round(bcdiv($v['price'], 2, 4), 2);
