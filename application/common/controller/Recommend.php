@@ -583,14 +583,7 @@ class Recommend{
 
                 $up = db('user_exclusive_pig')->where('id', $v['id'])->update(['price' => $division_price]);
                 if (!$up) {
-                    $division_record[] = [
-                        'division_id'    => $v['id'],
-                        'user_id'        => $v['user_id'],
-                        'division_price' => $v['price'],
-                        'status'         => 2,
-                        'created_at'     => time()
-                    ];
-                    continue;
+                    throw new \Exception();
                 } else {
                     $division_record[] = [
                         'division_id'    => $v['id'],
