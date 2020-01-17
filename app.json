@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/help/help",
+    "pages/mine/mine",
+    "pages/bankCard/bankCard",
+    "pages/shiming/shiming",
+    "pages/safe/safe",
+    "pages/myTeam/myTeam",
+    "pages/invite/invite",
+    "pages/editpwd/editpwd",
+    "pages/setting/setting",
+    "pages/weifen/weifen",
+    "pages/HKT/HKT",
+    "pages/orderRecord/orderRecord",
+    "pages/transferRecord/transferRecord",
+    "pages/bankCardkong/bankCardkong"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#b5b5b5",
+    "selectedColor": "#576ef4",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/assets/images/bottom_navigator/index_1.png",
+        "selectedIconPath": "/assets/images/bottom_navigator/index_2.png"
+      },
+      {
+        "pagePath": "pages/help/help",
+        "text": "帮助中心",
+        "iconPath": "/assets/images/bottom_navigator/mess_1.png",
+        "selectedIconPath": "/assets/images/bottom_navigator/mess_2.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/assets/images/bottom_navigator/my_1.png",
+        "selectedIconPath": "/assets/images/bottom_navigator/my_2.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

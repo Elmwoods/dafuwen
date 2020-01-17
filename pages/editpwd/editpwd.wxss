@@ -1,0 +1,51 @@
+page {
+  background-color: #f1f1f1;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.module{
+  margin: 30rpx 0 60rpx;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  background-color: #fff;
+}
+.module view{
+  display: flex;
+  justify-content: flex-start;
+  height: 110rpx;
+  line-height: 110rpx;
+  border-bottom: 1px solid #e5e5e5;
+  position: relative;
+}
+.module text{
+  display: inline-block;
+  width: 150rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+.phone_check{
+  width: 80%;
+  height: 110rpx;
+  line-height: 110rpx;
+  font-size: 28rpx;
+}
+.num{
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background-color: #cae3ff;
+  position: absolute;
+  top: 22%;
+  right: 0;
+}
+.sure_btn {
+  width: 690rpx;
+  margin: 40rpx 30rpx;
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: normal;
+  background-color: #3850e8;
+}

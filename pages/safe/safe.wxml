@@ -1,0 +1,9 @@
+<!--安全中心-->
+<view class="container">
+  <view class="ipt_info">
+    <navigator class="pwd" url='/pages/editpwd/editpwd'>修改密码<image class="abs" src="/assets/images/mine/right.png"/></navigator>
+    <navigator class="erpwd" url='/pages/editpwd/editpwd'>修改二级密码<image class="abs" src="/assets/images/mine/right.png"/></navigator>
+  </view>
+   <!-- 新添加按钮 -->
+   <button style="width: 690rpx;" class="sure_btn"> 退出当前账号 </button>
+</view>

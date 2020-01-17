@@ -1,0 +1,69 @@
+page {
+  height: 100%;
+  background-color: #fff;
+}
+.container{
+  height: 100%;
+  font-size: 28rpx;
+}
+.module_top{
+  width: 100%;
+  height: 336rpx;
+}
+.module_top image{
+  width: 100%;
+  height: 100%;
+}
+.help_nav{
+  width: 100%;
+  height: 158rpx;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0rpx 20rpx;
+  margin: -70rpx auto 0;
+  background-image: url("data:image/png;base64,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");
+  background-size: 100% 100%;
+}
+.help_nav .help_nav_li{
+  display: inline-block;
+  width: 35%;
+  height:150rpx;
+  line-height:150rpx;
+  text-align:center;
+  margin:0 6%;
+}
+.help_nav image{
+  display:inline-block;
+  vertical-align:middle;
+  width:68rpx;
+  height:66rpx;
+  margin-right:15rpx;
+}
+.help_nav .help_nav_li text{
+  display:inline-block;
+  height:144rpx;
+  line-height:144rpx;
+  text-align:center;
+}
+.line{
+  display: inline-block;
+  width: 2rpx;
+  height: 80rpx;
+  background-color: #e3e3e3;
+  vertical-align: middle;
+}
+
+.activited {
+  border-bottom: 2rpx #3850e8 solid;
+  color: #3850e8 ;
+}
+.txt{
+  width: 100%;
+  color: #666;
+  font-size: 30rpx;
+  margin: 30rpx 5%;
+}
+.txt_title{
+  color: #333;
+  margin-bottom: 20rpx;
+}

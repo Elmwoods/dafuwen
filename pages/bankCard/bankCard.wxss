@@ -1,0 +1,54 @@
+page {
+  height: 100%;
+  background-color: #f1f1f1;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 30rpx;
+}
+.module{
+  width: 690rpx;
+  height: 175rpx;
+  box-sizing: border-box;
+  padding: 30rpx;
+  position: relative;
+  /* display: flex;
+  justify-content: space-between;
+  align-items: center; */
+  background-size: cover;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArIAAACvCAYAAAABrj3sAAAExElEQVR4nO3dT2rcZQDG8Wd+wfQOJiDY3qArb5FC4ymUoot6hiYbN54iaus9FMF1AgoNOYAu7JTwuphExhB1ZpH88sDnAwPDy7t4ll9+zJ/FGCO32E1ycPX6JMmHV2cAAHDX/kjyNsnPSV4n+SHJ8ualxS0h+yzJUZIndzwQAAA2cZrkqyTfrx9Oa+93kry6uiBiAQB4KJ4k+S6rVt25Plx/Ivsqycv73wUAABs7yurp7N8h+zzJyZyLAABgQ4dJvl2MMXaTnCXZn3kQAABs4jzJx1NWRStiAQBosZfk0ymrn9gCAIAmB4sxxq9JPpp7CQAAbOG3xRjjzySP5l4CAABbWC7Gv/y1FwAAPGTT/18BAICHR8gCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQScgCAFBJyAIAUEnIAgBQaUry+9wjAABgS8spycXcKwAAYEsXU5Jf5l4BAABb+nFK8mbuFQAAsKU3izHGbpKzJPtzrwEAgA2cJ3k8JVkm+XLmMQAAsKkvkry7/vmtkyTHM44BAIBNHGfVrlmMMa4Pd5J8neSzmUYBAMB/+SbJiySXyT//EOEyyedJnic5vf9dAABwq9Mkh1k9cL28Plx/Irtu9+rysyRPk+wl+eDuNwIAQN5n9YWun5K8zuqjBMubl/4C7O9WhLgLbxIAAAAASUVORK5CYII=");
+}
+.module_pic{
+  width: 88rpx;
+  height: 88rpx;
+  line-height: 175rpx;
+  position: absolute;
+  left: 30rpx;
+  top: 40rpx;
+}
+.module_info{
+  position: absolute;
+  left: 145rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+.name{
+  color: #666;
+}
+.delete_btn{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 55rpx;
+}
+.add_btn {
+  width: 690rpx;
+  margin: 40rpx;
+  color: #fff;
+  font-weight: normal;
+  background-color: #3850e8;
+}

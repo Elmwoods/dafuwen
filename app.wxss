@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'PingFangRegular';
+  src: url("./assets/font/PingFangRegular.otf")
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  color: #333;
+  font-family:"PingFangRegular";
+}
+.centerAlign{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+page {
+  height: 100%;
+  font-family:"PingFangRegular";
+  font-size:12px;
+}

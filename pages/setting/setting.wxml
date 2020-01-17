@@ -1,0 +1,36 @@
+<!-- 系统消息 -->
+<view class="container">
+  <!-- 导航栏 -->
+  <view class="nav">
+    <view class="nav_li" bindtap="changeNav" data-index="0"><text class="{{ currNavIndex === '0' ? 'activited' : '' }}">最新消息</text></view>
+    <view class="line"></view>
+    <view class="nav_li" bindtap="changeNav" data-index="1"><text class="{{ currNavIndex === '1' ? 'activited' : '' }}">热门公告</text></view>
+    <view class="line"></view>
+    <view class="nav_li" bindtap="changeNav" data-index="2"><text class="{{ currNavIndex === '2' ? 'activited' : '' }}">热门公告</text></view>
+  </view>
+  <view class="date">2020.01.20</view>
+  <view class="module">
+    <view class="module-in">
+      <view class="module_title">限时优惠</view>
+      <view class="module_txt" data-index="1" class="{{ currModuleIndex === '1' && currModuleStatus=== 'show' ? 'show' : 'module_txt' }}">这4个字或许并不适用于所有人。举个例子：这周三德尔福拆分之后的新公司采访...这四个字或许并不适用于所有人。举个例子：这周三德尔福拆分之后的新公司采访...这四个字或许并不适用于所有人。</view>
+       <view wx:if="{{currModuleIndex === '1' && currModuleStatus === 'show'}}" class="btn" data-index="1" data-status="show" bindtap="showAll">收起</view>
+    <view wx:else="currModuleIndex === '1' && currModuleStatus=== 'hide'" class="btn" data-index="1" data-status="hide" bindtap="showAll">点击查看更多</view>
+    </view>
+  </view>
+  <view class="module">
+    <view class="module-in">
+      <view class="module_title">限时优惠</view>
+      <view class="module_txt" data-index="2" class="{{ currModuleIndex === '2' && currModuleStatus=== 'show' ? 'show' : 'module_txt' }}">这4个字或许并不适用于所有人。举个例子：这周三德尔福拆分之后的新公司采访...这四个字或许并不适用于所有人。举个例子：这周三德尔福拆分之后的新公司采访...这四个字或许并不适用于所有人。</view>
+       <view wx:if="{{currModuleIndex === '2' &&currModuleStatus === 'show'}}" class="btn" data-index="2" data-status="show" bindtap="showAll">收起</view>
+    <view wx:else="currModuleIndex === '2' && currModuleStatus=== 'hide'" class="btn" data-index="2" data-status="hide" bindtap="showAll">点击查看更多</view>
+    </view>
+  </view>
+  <view class="module">
+    <view class="module-in">
+      <view class="module_title">20周年店庆</view>
+      <view class="module_txt" data-index="3" class="{{ currModuleIndex === '3' && currModuleStatus=== 'show' ? 'show' : 'module_txt' }}">这4个字或许并不适用于所有人。举个例子：这周三德尔福拆分之后的新公司采访...这四个字或许并不适用于所有人。举个例子：这周三德尔福拆分之后的新公司采访...这四个字或许并不适用于所有人。</view>
+       <view wx:if="{{currModuleIndex === '3' && currModuleStatus === 'show'}}" class="btn" data-index="3" data-status="show" bindtap="showAll">收起</view>
+    <view wx:else="currModuleIndex === '3' && currModuleStatus=== 'hide'" class="btn" data-index="3" data-status="hide" bindtap="showAll">点击查看更多</view>
+    </view>
+  </view>
+</view>

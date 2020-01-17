@@ -1,0 +1,8 @@
+<!-- 绑定银行卡 -->
+<view class="container">
+  <image src="/assets/images/bankCard_kong.png"></image>
+  <!-- 添加的银行卡 -->
+  <view class="tips">暂时还未绑定任何银行卡</view>
+  <!-- 新添加按钮 -->
+  <button style="width: 690rpx;" class="add_btn"> 添加 </button>
+</view>

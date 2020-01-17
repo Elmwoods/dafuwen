@@ -1,0 +1,64 @@
+<!-- 首页 -->
+<view class="container" >
+  <view class="banner">
+    <image src="/assets/images/index/banner.png"></image>
+  </view>
+  <view class="content">
+    <view class="module">
+      <view class="module_left"><image src="/assets/images/index/kunlunjing.png"></image></view>
+      <view class="module_right">
+        <view class="right_title">昆仑镜<view class="btn blue">立即预约</view></view>
+        <view class="right_line">价值：100-300</view>
+        <view class="right_line">购置时间：13:00--14:00</view>
+        <view class="right_line">预约、即抢购置微积分：8/16</view>
+        <view class="right_line">智能合约收益：3天/21.00%</view>
+        <view class="right_line">可挖HTK币：6枚</view>
+      </view>
+      
+    </view>
+    <view class="module">
+      <view class="module_left"><image src="/assets/images/index/xuanyuanjian.png"></image></view>
+      <view class="module_right">
+        <view class="right_title">轩辕剑<view class="btn blue">立即预约</view></view>
+        <view class="right_line">价值：100-300</view>
+        <view class="right_line">购置时间：13:00--14:00</view>
+        <view class="right_line">预约、即抢购置微积分：8/16</view>
+        <view class="right_line">智能合约收益：3天/21.00%</view>
+        <view class="right_line">可挖HTK币：6枚</view>
+      </view>
+    </view>
+    <view class="module">
+      <view class="module_left"><image src="/assets/images/index/shennongding.png"></image></view>
+      <view class="module_right">
+        <view class="right_title">神农鼎<view class="btn blue">立即预约</view></view>
+        <view class="right_line">价值：100-300</view>
+        <view class="right_line">购置时间：13:00--14:00</view>
+        <view class="right_line">预约、即抢购置微积分：8/16</view>
+        <view class="right_line">智能合约收益：3天/21.00%</view>
+        <view class="right_line">可挖HTK币：6枚</view>
+      </view>
+    </view>
+    <view class="module">
+      <view class="module_left"><image src="/assets/images/index/kongdongyin.png"></image></view>
+      <view class="module_right">
+        <view class="right_title">崆峒印<view class="btn blue">立即预约</view></view>
+        <view class="right_line">价值：100-300</view>
+        <view class="right_line">购置时间：13:00--14:00</view>
+        <view class="right_line">预约、即抢购置微积分：8/16</view>
+        <view class="right_line">智能合约收益：3天/21.00%</view>
+        <view class="right_line">可挖HTK币：6枚</view>
+      </view>
+    </view>
+    <view class="module">
+      <view class="module_left"><image src="/assets/images/index/fuxiqin.png"></image></view>
+      <view class="module_right">
+        <view class="right_title">伏羲琴<view class="btn red">升值中</view></view>
+        <view class="right_line">价值：100-300</view>
+        <view class="right_line">购置时间：13:00--14:00</view>
+        <view class="right_line">预约、即抢购置微积分：8/16</view>
+        <view class="right_line">智能合约收益：3天/21.00%</view>
+        <view class="right_line">可挖HTK币：6枚</view>
+      </view>
+    </view>
+  </view>
+</view>

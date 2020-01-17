@@ -1,0 +1,24 @@
+<!-- 帮助中心 -->
+<view class="container">
+  <view class="module_top"><image src="/assets/images/help/top_bg.png"/></view>
+    <!-- 导航栏 -->
+    <view class="help_nav">
+      <view class="help_nav_li {{ currNavIndex === '0' ? 'activited' : '' }}" bindtap="changeNav" data-index="0">
+        <image src="/assets/images/help/icon_left.png"/>
+        <text>帮助中心</text>
+      </view>
+      <view class="line"></view>
+      <view class="help_nav_li {{ currNavIndex === '1' ? 'activited' : '' }}" bindtap="changeNav" data-index="1">
+        <image src="/assets/images/help/icon_right.png" />
+        <text>线上客服</text>
+      </view>
+    </view>
+  <view class="txt">
+    <view class="txt_title">领养前准备工作</view>
+    <view>1.扫码注册；</view>
+    <view>2.填写身份证资料提交认证材料；</view>
+    <view>3.购买至少50个微分启动账户；</view>
+    <view>4.完善收款信息（支付宝、微信、银行卡信息）；</view>
+    <view>5.进入安全中心设置二级密码。</view>
+  </view>
+</view>

@@ -1,0 +1,48 @@
+<!-- 当前微积分 -->
+<view class="container">
+  <view class="operate">
+    <view class="operate_title">当前微积分</view>
+    <view class="operate_num">1 2 0 3 0 6</view>
+    <view class="operate_btn">
+      <button style="width: 180rpx;height: 65rpx; " class="btn left_btn"> 转增 </button>
+      <button style="width: 180rpx;height: 65rpx;" class="btn right_btn"> 充值 </button>
+    </view>
+    <view class="operate_tips">
+      <view class="tips_title">微分获取方法</view>
+      <view>1.向推荐人购买（线下付款，推荐人转入）</view>
+      <view>2.联系客服购买</view>
+      <view>3.在线充值</view>
+    </view>
+  </view>
+  <view class="transate_title">交易明细</view>
+  <view class="transate_detail">
+    <view class="transate_one">
+      <view>
+        <view>预约消费积分</view>
+        <view class="date">2020-01-11</view>
+      </view>
+      <view class="transate_num">+1000</view>
+    </view>
+    <view class="transate_one">
+      <view>
+        <view>预约消费积分</view>
+        <view class="date">2020-01-11</view>
+      </view>
+      <view class="transate_num">+1000</view>
+    </view>
+    <view class="transate_one">
+      <view>
+        <view>预约消费积分</view>
+        <view class="date">2020-01-11</view>
+      </view>
+      <view class="transate_num">+1000</view>
+    </view>
+    <view class="transate_one">
+      <view>
+        <view>预约消费积分</view>
+        <view class="date">2020-01-11</view>
+      </view>
+      <view class="transate_num">+1000</view>
+    </view>
+  </view>
+</view>

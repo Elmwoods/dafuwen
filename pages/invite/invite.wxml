@@ -1,0 +1,7 @@
+<!--安全中心-->
+<view class="container">
+  <image class="img" src="/assets/images/mine/invite_bg.png"/>
+  <image class="erweima" src="/assets/images/mine/erweima.png"/>
+  <button style="width:490rpx;" class="btn save">保存图片</button>
+  <button style="width:490rpx;" class="btn send">发送好友</button>
+</view>

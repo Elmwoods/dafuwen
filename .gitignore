@@ -4,3 +4,5 @@ composer.lock
 runtime
 /public/uploads
 /application/database.php
+.DS_Store
+.vscode/

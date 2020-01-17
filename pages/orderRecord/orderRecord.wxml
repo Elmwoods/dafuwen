@@ -1,0 +1,33 @@
+<!--预约记录-->
+<view class="container">
+  <view class="module centerAlign">
+    <view>
+      <view>工业地皮</view>
+      <view class="date">2020-01-11</view>
+    </view>
+    <view class="person">
+      <view class="num">+1000</view>
+      <view class="txt">微积分</view>
+    </view>
+  </view>
+  <view class="module centerAlign">
+    <view>
+      <view>工业地皮</view>
+      <view class="date">2020-01-11</view>
+    </view>
+    <view class="person">
+      <view class="num">+1000</view>
+      <view class="txt">微积分</view>
+    </view>
+  </view>
+  <view class="module centerAlign">
+    <view>
+      <view>工业地皮</view>
+      <view class="date">2020-01-11</view>
+    </view>
+    <view class="person">
+      <view class="num">+1000</view>
+      <view class="txt">微积分</view>
+    </view>
+  </view>
+</view>

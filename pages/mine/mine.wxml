@@ -1,0 +1,82 @@
+<!-- 个人中心 -->
+<view class="container">
+  <view class="mineInfo">
+    <view class="mineInfo_bg">
+      <!-- <open-data class="img" type="userAvatarUrl"></open-data> -->
+      <view><image class="userHeader" src="../../assets/images/mine/userHeader.png"></image></view>
+      <view class="userId">
+        <view>ID:0314030177</view>
+        <view class="huiyuan">GP合伙人</view>
+      </view>
+      <navigator class="userScore" url='/pages/weifen/weifen'>微分：23014</navigator>
+      <navigator class="HKT" url='/pages/HKT/HKT'>
+        <view class="HKT_li">
+          <view>169</view>
+          <view>HKT币</view>
+        </view>
+        <view class="HKT_li">
+          <view>178621</view>
+          <view>合约收益</view>
+        </view>
+        <view class="HKT_li">
+          <view>60753.6</view>
+          <view>总资产</view>
+        </view>
+        <view class="HKT_li">
+          <view>60753.6</view>
+          <view>推广收益</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <!-- 记录 -->
+  <view class="record">
+    <view class="record_mg">
+      <navigator class="record_type" url='/pages/orderRecord/orderRecord'>
+        <view><image src="/assets/images/mine/order.png"></image></view>
+        <view>预约记录</view>
+      </navigator>
+      <view class="record_type">
+        <view><image src="/assets/images/mine/buy_icon.png"></image></view>
+        <view>购买记录</view>
+      </view>
+      <navigator class="record_type" url='/pages/transferRecord/transferRecord'>
+        <view><image src="/assets/images/mine/transfer_icon.png"></image></view>
+        <view>转让记录</view>
+      </navigator>
+    </view>
+  </view>
+  <!-- 点击进入 -->
+  <view class="settings">
+    <navigator class="settings_info" url='/pages/bankCard/bankCard'>
+      <image class="img" src="/assets/images/mine/bankCard_icon.png"></image>
+      <text>银行卡</text>
+      <image class="abs" src="/assets/images/mine/right.png"/>
+    </navigator>
+    <navigator class="settings_info" url="/pages/shiming/shiming">
+      <image class="img" src="/assets/images/mine/shiming.png"></image>
+      <text>实名认证</text>
+      <image class="abs" src="/assets/images/mine/right.png"/>
+    </navigator>
+    <navigator class="settings_info" url='/pages/safe/safe'>
+      <image class="img" src="/assets/images/mine/safe_icon.png"></image>
+      <text>安全中心</text>
+      <image class="abs" src="/assets/images/mine/right.png"/>
+    </navigator>
+    <navigator class="settings_info" url="/pages/myTeam/myTeam">
+      <image class="img" src="/assets/images/mine/myTeam_icon.png"></image>
+      <text>我的团队</text>
+      <image class="abs" src="/assets/images/mine/right.png"/>
+    </navigator>
+    <navigator class="settings_info" url='/pages/invite/invite'>
+      <image class="img" src="/assets/images/mine/myInvite_icon.png"></image>
+      <text>邀请好友</text>
+      <image class="abs" src="/assets/images/mine/right.png"/>
+    </navigator>
+    <navigator class="settings_info" url='/pages/setting/setting'>
+      <image class="img" src="/assets/images/mine/set_info.png"></image>
+      <text>系统消息</text>
+      <image class="abs" src="/assets/images/mine/right.png"/>
+    </navigator>
+  </view>
+</view>

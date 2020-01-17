@@ -1,0 +1,28 @@
+<!-- HKT币 -->
+<view class="container">
+  <view class="operate">
+    <view class="operate_title">HKT币</view>
+    <view class="operate_num">1 2 0 3 0 6</view>
+    <view class="operate_btn">
+      <button style="width: 240rpx;height: 65rpx;" class="btn"> 充值 </button>
+    </view>
+  </view>
+  <view class="transate_detail">
+    <view class="transate_one">
+      <view class="id">编号：202001137084231</view>
+      <view class="jifen">
+        <view>预约消费积分</view>
+        <view class="date">2020-01-11</view>
+        <view class="transate_num">+1000</view>
+      </view>
+    </view>
+    <view class="transate_one">
+      <view class="id">编号：202001137084231</view>
+      <view class="jifen">
+        <view>预约消费积分</view>
+        <view class="date">2020-01-11</view>
+        <view class="transate_num">+1000</view>
+      </view>
+    </view>
+  </view>
+</view>

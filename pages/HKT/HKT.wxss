@@ -1,0 +1,85 @@
+page {
+  height: 100%;
+  background-color: #f1f1f1;
+}
+.container{
+  height: 100%;
+  font-size: 28rpx;
+}
+.operate{
+  width: 100%;
+  height: 323rpx;
+  margin-top: 40rpx;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 40rpx 30rpx;
+}
+.operate_title{
+  color: #666;
+  font-size: 30rpx;
+  text-align: center;
+}
+.operate_num{
+  color: #000;
+  font-size: 46rpx;
+  text-align: center;
+  margin: 35rpx auto;
+}
+.operate_btn{
+  width: 100%;
+  height: 70rpx;
+  text-align: center;
+}
+.btn {
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: normal;
+  background-color: #3850e8;
+}
+.transate_title{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #5c5c5c;
+  box-sizing: border-box;
+  padding: 0rpx 30rpx;
+}
+.transate_detail{
+  width: 100%;
+  color: #333;
+}
+.transate_one{
+  width: 100%;
+  font-size: 28rpx;
+  margin-top: 30rpx;
+  background-color: #fff;
+  border-bottom: 1px solid #f2f2f2;
+}
+.id{
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #666;
+  box-sizing: border-box;
+  padding:0 30rpx;
+  border-bottom: 1px solid #f2f2f2;
+}
+.jifen{
+  width: 100%;
+  height: 128rpx;
+  position: relative;
+  box-sizing: border-box;
+  padding:25rpx 30rpx;
+}
+.date{
+  font-size: 24rpx;
+  color: #666;
+}
+.transate_num{
+  font-size: 30rpx;
+  height: 128rpx;
+  line-height: 128rpx;
+  position: absolute;
+  top: 0;
+  right: 30rpx;
+}

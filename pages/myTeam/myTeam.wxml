@@ -1,0 +1,11 @@
+<!--我的团队-->
+<view class="container">
+  <view class="module centerAlign">
+    <image class="module_icon" src="/assets/images/mine/myTeam_icon.png"/>
+    <text>ID:012348720</text>
+    <view class="person">
+      <view class="num">0人</view>
+      <view class="txt">团队人数</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,10 @@
+<!-- 实名认证 -->
+<view class="container">
+  <view class="tips">*为您账户安全请实名认证</view>
+  <view class="ipt_info">
+    <view><text>真实姓名：</text><input class="ipt_ipt" auto-focus placeholder="请输入姓名"/></view>
+    <view><text>身份证号码:</text><input class="ipt_ipt" type="idcard" placeholder="请输入身份证号码"/></view>
+  </view>
+   <!-- 新添加按钮 -->
+   <button style="width: 690rpx;" class="sure_btn"> 确认提现 </button>
+</view>

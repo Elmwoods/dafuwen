@@ -1,0 +1,40 @@
+<!--预约记录-->
+<view class="container">
+  <!-- 导航栏 -->
+  <view class="navbar">
+    <view bindtap="changeNav" data-index="0"><text class="{{ currNavIndex === '0' ? 'activited' : '' }}">待转让</text></view>
+    <view bindtap="changeNav" data-index="1"><text class="{{ currNavIndex === '1' ? 'activited' : '' }}" >转让中</text></view>
+    <view bindtap="changeNav" data-index="2"><text class="{{ currNavIndex === '2' ? 'activited' : '' }}" >已完成</text></view>
+    <view bindtap="changeNav" data-index="3"><text class="{{ currNavIndex === '3' ? 'activited' : '' }}">申诉</text></view>
+  </view>
+  <view class="transfer_detail">
+    <view class="transfer_one">
+      <view class="title"><text>地皮：商业地皮 </text><view class="btn">已锁定</view></view>
+      <view class="txt">
+        <view class="">价值：<text class="value">1030.78=0KKT</text></view>
+        <view class="">智能合约收益：<text class="value">4天/14.00%</text></view>
+        <view class="">买入时间：<text class="date">2020-01-21 13:58:05</text></view>
+      </view>
+    </view>
+  </view>
+  <view class="transfer_detail">
+    <view class="transfer_one">
+      <view class="title"><text>地皮：商业地皮 </text><view class="btn">已锁定</view></view>
+      <view class="txt">
+        <view class="">价值：<text class="value">1030.78=0KKT</text></view>
+        <view class="">智能合约收益：<text class="value">4天/14.00%</text></view>
+        <view class="">买入时间：<text class="date">2020-01-21 13:58:05</text></view>
+      </view>
+    </view>
+  </view>
+  <view class="transfer_detail">
+    <view class="transfer_one">
+      <view class="title"><text>地皮：商业地皮 </text><view class="btn">已锁定</view></view>
+      <view class="txt">
+        <view class="">价值：<text class="value">1030.78=0KKT</text></view>
+        <view class="">智能合约收益：<text class="value">4天/14.00%</text></view>
+        <view class="">买入时间：<text class="date">2020-01-21 13:58:05</text></view>
+      </view>
+    </view>
+  </view>
+</view>

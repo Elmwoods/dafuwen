@@ -1,0 +1,11 @@
+<!-- 修改密码 -->
+<view class="container">
+  <view class="module">
+    <view><text>手机验证：</text><input class="phone_check" auto-focus placeholder="请输入验证码"/></view>
+    <view><text>验证码：</text><input class="phone_check" placeholder="请输入验证码"/><text class="num">36901</text></view>
+    <view><text>新密码：</text><input class="phone_check" placeholder="请输入密码"/></view>
+    <view><text>确认密码：</text><input class="phone_check" placeholder="请再次输入"/></view>
+  </view>
+   <!-- 新添加按钮 -->
+   <button style="width: 690rpx;" class="sure_btn"> 确定 </button>
+</view>

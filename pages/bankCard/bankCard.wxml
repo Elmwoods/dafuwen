@@ -1,0 +1,15 @@
+<!-- 银行卡 -->
+<view class="container">
+  <!-- 添加的银行卡 -->
+  <view class="module">
+    <image class="module_pic" src="../../assets/images/bankCard/module_pic.png"/>
+    <view class="module_info">
+      <view><text class="name">账户昵称：</text>某某莫</view>
+      <view><text class="name">账号：</text>默默</view>
+      <view><text class="name">账户类型：</text>支付宝</view>
+    </view>
+    <image class="delete_btn" src="../../assets/images/bankCard/delete_btn.png"/>
+  </view>
+  <!-- 新添加按钮 -->
+  <button style="width: 690rpx;" class="add_btn"> 添加 </button>
+</view>
